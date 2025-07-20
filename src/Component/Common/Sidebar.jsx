@@ -13,14 +13,14 @@ import {
 
 const Sidebar = ({ username }) => {
   const linkClass = ({ isActive }) =>
-    `flex items-center gap-3 px-4 py-3 rounded-md hover:bg-[#BFCFBB] transition ${
-      isActive ? "bg-[#BFCFBB] font-semibold" : "font-normal"
+    `flex items-center gap-3 px-4 py-3 rounded-md hover:bg-[#E7F2F8] transition ${
+      isActive ? "bg-[#E7F2F8] font-semibold" : "font-normal"
     }`;
 
   return (
-    <aside className="w-64 bg-white text-[#344C3D] min-h-screen border-r border-[#BFCFBB]/50 flex flex-col">
+    <aside className="w-64 bg-white text-[#0B1F3A] min-h-screen border-r border-[#E7F2F8]/50 flex flex-col">
       {/* Header */}
-      <div className="px-6 py-5 border-b border-[#BFCFBB]/40 flex items-center gap-3">
+      <div className="px-6 py-5 border-b border-[#E7F2F8]/40 flex items-center gap-3">
         <User className="w-6 h-6" />
         <span className="font-semibold text-lg truncate">{username || "User"}</span>
       </div>
@@ -47,9 +47,9 @@ const Sidebar = ({ username }) => {
           Results
         </NavLink>
 
-        <NavLink to="/plans" className={linkClass}>
+        <NavLink to="/courses" className={linkClass}>
           <CreditCard className="w-5 h-5" />
-          Plans
+          Courses
         </NavLink>
 
         <NavLink to="/support" className={linkClass}>
@@ -60,6 +60,10 @@ const Sidebar = ({ username }) => {
         <NavLink to="/settings" className={linkClass}>
           <Settings className="w-5 h-5" />
           Settings
+        </NavLink>
+        <NavLink to="/profile" className={linkClass}>
+          <Settings className="w-5 h-5" />
+          Profile
         </NavLink>
       </nav>
     </aside>

@@ -2,15 +2,15 @@ import React from "react";
 import { BookOpen, Users, TrendingUp, CalendarClock, Star } from "lucide-react";
 
 const About = () => {
-  const sectionClass = "bg-[#f7f9f4] p-6 rounded-lg shadow-md";
-  const iconClass = "text-[#344C3D] w-8 h-8 mb-1 mt-2";
+  const sectionClass = "bg-[#E7F2F8] p-6 rounded-lg shadow-md";
+  const iconClass = "text-[#0B1F3A] w-8 h-8 mb-1 mt-2";
 
   return (
-    <div className="min-h-screen bg-white text-[#344C3D] px-6 py-16 max-w-6xl mx-auto">
+    <div className="min-h-screen bg-white text-[#0B1F3A] px-6 py-16 max-w-6xl mx-auto">
       {/* Intro */}
       <section className="text-center max-w-3xl mx-auto mb-16">
         <h1 className="text-5xl font-bold mb-4">About VedantaQ</h1>
-        <p className="text-[#6B7B68] text-lg">
+        <p className="text-[#0B1F3A] text-lg">
           VedantaQ is an intelligent learning platform designed to empower students, aspirants, and learners with personalized MCQs tailored to their interests.
         </p>
       </section>
@@ -66,7 +66,7 @@ const About = () => {
       </div>
 
       {/* Motivational Quote */}
-      <section className="mt-20 text-center italic text-[#6B7B68] text-lg max-w-2xl mx-auto  border-[#344C3D] pl-6">
+      <section className="mt-20 text-center italic text-[#0B1F3A] text-lg max-w-2xl mx-auto border-[#0B1F3A] pl-6">
         “Learning never exhausts the mind.” – Leonardo da Vinci
       </section>
 
@@ -74,7 +74,7 @@ const About = () => {
       <section className="mt-16 text-center">
         <button
           onClick={() => window.location.href = "/features"}
-          className="bg-[#344C3D] text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-[#2c3f33] transition duration-300"
+          className="bg-[#0B1F3A] text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-[#071628] transition duration-300"
         >
           Explore Features
         </button>

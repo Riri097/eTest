@@ -43,36 +43,39 @@ function Signup({ onClose, toggleModals }) {
 
   return (
     <div
-      className="fixed inset-0  bg-opacity-40 backdrop-blur-sm flex justify-center items-center z-50"
+      className="fixed inset-0 bg-opacity-40 backdrop-blur-sm flex justify-center items-center z-50"
       onClick={onClose}
     >
       <div
-        className="bg-white border-2 border-[#344C3D] rounded-2xl shadow-xl w-full max-w-md p-7 relative"
+        className="bg-white border-2 border-[#0B1F3A] rounded-2xl shadow-xl w-full max-w-md p-8 relative"
         onClick={(e) => e.stopPropagation()}
       >
-        <h2 className="text-3xl font-bold text-[#344C3D] mb-3 text-center">
+        <h2 className="text-3xl font-bold text-[#0B1F3A] mb-3 text-center">
           Sign Up
         </h2>
 
-        <form onSubmit={handleSubmit} className="space-y-5">
-          <input
-            type="text"
-            name="first_name"
-            placeholder="First Name"
-            onChange={handleChange}
-            value={formData.first_name}
-            required
-            className="w-full border-2 border-[#BFCFBB] rounded-md px-4 py-3 bg-white text-[#344C3D] focus:outline-none focus:ring-2 focus:ring-[#344C3D]"
-          />
-          <input
-            type="text"
-            name="last_name"
-            placeholder="Last Name"
-            onChange={handleChange}
-            value={formData.last_name}
-            required
-            className="w-full border-2 border-[#BFCFBB] rounded-md px-4 py-3 bg-white text-[#344C3D] focus:outline-none focus:ring-2 focus:ring-[#344C3D]"
-          />
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="flex gap-x-4">
+  <input
+    type="text"
+    name="first_name"
+    placeholder="First Name"
+    onChange={handleChange}
+    value={formData.first_name}
+    required
+    className="w-1/2 border-2 border-[#E7F2F8] rounded-md px-4 py-3 bg-white text-[#0B1F3A] focus:outline-none focus:ring-2 focus:ring-[#0B1F3A]"
+  />
+  <input
+    type="text"
+    name="last_name"
+    placeholder="Last Name"
+    onChange={handleChange}
+    value={formData.last_name}
+    required
+    className="w-1/2 border-2 border-[#E7F2F8] rounded-md px-4 py-3 bg-white text-[#0B1F3A] focus:outline-none focus:ring-2 focus:ring-[#0B1F3A]"
+  />
+</div>
+
           <input
             type="text"
             name="username"
@@ -80,7 +83,7 @@ function Signup({ onClose, toggleModals }) {
             onChange={handleChange}
             value={formData.username}
             required
-            className="w-full border-2 border-[#BFCFBB] rounded-md px-4 py-3 bg-white text-[#344C3D] focus:outline-none focus:ring-2 focus:ring-[#344C3D]"
+            className="w-full border-2 border-[#E7F2F8] rounded-md px-4 py-3 bg-white text-[#0B1F3A] focus:outline-none focus:ring-2 focus:ring-[#0B1F3A]"
           />
           <input
             type="email"
@@ -89,7 +92,7 @@ function Signup({ onClose, toggleModals }) {
             onChange={handleChange}
             value={formData.email}
             required
-            className="w-full border-2 border-[#BFCFBB] rounded-md px-4 py-3 bg-white text-[#344C3D] focus:outline-none focus:ring-2 focus:ring-[#344C3D]"
+            className="w-full border-2 border-[#E7F2F8] rounded-md px-4 py-3 bg-white text-[#0B1F3A] focus:outline-none focus:ring-2 focus:ring-[#0B1F3A]"
           />
           <input
             type="password"
@@ -98,7 +101,7 @@ function Signup({ onClose, toggleModals }) {
             onChange={handleChange}
             value={formData.password}
             required
-            className="w-full border-2 border-[#BFCFBB] rounded-md px-4 py-3 bg-white text-[#344C3D] focus:outline-none focus:ring-2 focus:ring-[#344C3D]"
+            className="w-full border-2 border-[#E7F2F8] rounded-md px-4 py-3 bg-white text-[#0B1F3A] focus:outline-none focus:ring-2 focus:ring-[#0B1F3A]"
           />
           <input
             type="password"
@@ -107,21 +110,21 @@ function Signup({ onClose, toggleModals }) {
             onChange={handleChange}
             value={formData.confirm_password}
             required
-            className="w-full border-2 border-[#BFCFBB] rounded-md px-4 py-3 bg-white text-[#344C3D] focus:outline-none focus:ring-2 focus:ring-[#344C3D]"
+            className="w-full border-2 border-[#E7F2F8] rounded-md px-4 py-3 bg-white text-[#0B1F3A] focus:outline-none focus:ring-2 focus:ring-[#0B1F3A]"
           />
 
           <button
             type="submit"
-            className="w-20  bg-[#344C3D] hover:bg-[#2a3e31] text-white font-semibold py-3 rounded-lg shadow transition-all duration-300"
+            className="w-20 bg-[#0B1F3A] hover:bg-[#081830] text-white font-semibold py-3 rounded-lg shadow transition-all duration-300"
           >
             Sign Up
           </button>
         </form>
 
-        <p className="text-center mt-6 text-[#344C3D]">
+        <p className="text-center mt-6 text-[#0B1F3A]">
           Already have an account?{" "}
           <button
-            className="text-[#344C3D] font-semibold underline hover:text-[#2a3e31]"
+            className="text-[#0B1F3A] font-semibold underline hover:text-[#081830]"
             onClick={() => {
               onClose();
               toggleModals && toggleModals();
@@ -133,7 +136,7 @@ function Signup({ onClose, toggleModals }) {
         </p>
 
         <button
-          className="absolute top-4 right-4 text-[#344C3D] hover:text-[#2a3e31] text-xl font-bold"
+          className="absolute top-4 right-4 text-[#0B1F3A] hover:text-[#081830] text-xl font-bold"
           onClick={onClose}
           aria-label="Close modal"
           type="button"

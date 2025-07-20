@@ -1,6 +1,5 @@
 import React from "react";
-import Button from "../UI/Button";
-import { useNavigate } from "react-router-dom";
+
 import {
   BookOpenIcon,
   SparklesIcon,
@@ -50,10 +49,8 @@ const features = [
 ];
 
 const Features = () => {
-  const navigate = useNavigate();
-
   return (
-    <div className="min-h-screen bg-white text-[#344C3D] px-6 py-20">
+    <div className="min-h-screen bg-white text-[#0B1F3A] px-6 py-20">
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-5xl font-bold mb-6">Features of VedantaQ</h2>
         <p className="text-lg text-[#6B7B68] mb-12">
@@ -64,19 +61,13 @@ const Features = () => {
           {features.map((feature, idx) => (
             <div
               key={idx}
-              className="bg-[#BFCFBB] text-[#001400] p-6 rounded-xl shadow hover:shadow-md transition-shadow duration-300"
+              className="bg-[#E7F2F8] text-[#0B1F3A] p-6 rounded-xl shadow hover:shadow-md transition-shadow duration-300"
             >
-              <feature.icon className="h-8 w-8 text-[#344C3D] mb-4 mx-auto" />
+              <feature.icon className="h-8 w-8 text-[#0B1F3A] mb-4 mx-auto" />
               <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-              <p className="text-sm text-[#2f3c30]">{feature.description}</p>
+              <p className="text-sm text-[#375147]">{feature.description}</p>
             </div>
           ))}
-        </div>
-
-        <div className="mt-12">
-          <Button variant="primary" onClick={() => navigate("/login")}>
-            Get Started
-          </Button>
         </div>
       </div>
     </div>

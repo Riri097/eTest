@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import Navbar from "./Component/Common/Navbar";
 import Sidebar from "./Component/Common/Sidebar";
 import Footer from "./Component/Common/Footer";
@@ -10,6 +10,7 @@ import { ToastContainer } from "react-toastify";
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [modalType, setModalType] = useState(null);
+  const navigate = useNavigate()
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -17,6 +18,11 @@ function App() {
       setIsAuthenticated(true);
     }
   }, []);
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/dashboard");
+    }
+  }, [isAuthenticated, navigate]);
 
   const openLoginModal = () => setModalType("login");
   const openSignupModal = () => setModalType("signup");
@@ -34,8 +40,7 @@ function App() {
 
   return (
     <>
-      {/* The blurred background wrapper */}
-      <div className={`transition-filter duration-300  ${modalType ? "filter blur-md" : ""}`}>
+      <div className={`transition-filter duration-300}`}>
         <Navbar
           isAuthenticated={isAuthenticated}
           openLoginModal={openLoginModal}
@@ -64,8 +69,7 @@ function App() {
         <Footer />
       </div>
 
-      {/* Modal overlays */}
-      {modalType === "login" && (
+      {modalType === "login"  && !localStorage.getItem("token") && (
         <Login
           onClose={closeModal}
           setIsAuthenticated={setIsAuthenticated}

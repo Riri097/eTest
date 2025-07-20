@@ -57,10 +57,10 @@ function ExamInput() {
         background color is light green with opacity
       */}
       <div className="w-full max-w-xl bg-white rounded-xl shadow-md p-10">
-        <h1 className="text-3xl font-bold text-[#344C3D] mb-4">
+        <h1 className="text-3xl font-bold text-[#0B1F3A] mb-4">
           Ready to Take Your Test?
         </h1>
-        <p className="text-[#344C3D]/80 mb-8">
+        <p className="text-[#0B1F3A]/80 mb-8">
           Fill in the details below to begin your personalized exam experience.
         </p>
 
@@ -68,7 +68,7 @@ function ExamInput() {
           <div>
             <label
               htmlFor="topic"
-              className="block text-sm font-semibold text-[#344C3D] mb-2"
+              className="block text-sm font-semibold text-[#0B1F3A] mb-2"
             >
               Exam Topic
             </label>
@@ -80,14 +80,14 @@ function ExamInput() {
               onChange={handleChange}
               placeholder="e.g. Lokesewa, IOE, CEE, CMAT"
               required
-              className="w-full border border-[#344C3D]/40 rounded-md px-5 py-3 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#344C3D]"
+              className="w-full border border-[#0B1F3A]/40 rounded-md px-5 py-3 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#344C3D]"
             />
           </div>
 
           <div>
             <label
               htmlFor="description"
-              className="block text-sm font-semibold text-[#344C3D] mb-2"
+              className="block text-sm font-semibold text-[#0B1F3A] mb-2"
             >
               Description
             </label>
@@ -99,14 +99,14 @@ function ExamInput() {
               placeholder="Briefly describe the subject or focus area"
               rows={4}
               required
-              className="w-full border border-[#344C3D]/40 rounded-md px-5 py-3 resize-none shadow-sm focus:outline-none focus:ring-2 focus:ring-[#344C3D]"
+              className="w-full border border-[#0B1F3A]/40 rounded-md px-5 py-3 resize-none shadow-sm focus:outline-none focus:ring-2 focus:ring-[#344C3D]"
             />
           </div>
 
           <div>
             <label
               htmlFor="no_of_questions"
-              className="block text-sm font-semibold text-[#344C3D] mb-2"
+              className="block text-sm font-semibold text-[#0B1F3A] mb-2"
             >
               Number of Questions
             </label>
@@ -119,14 +119,14 @@ function ExamInput() {
               min={1}
               max={100}
               required
-              className="w-full border border-[#344C3D]/40 rounded-md px-5 py-3 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#344C3D]"
+              className="w-full border border-[#0B1F3A]/40 rounded-md px-5 py-3 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#344C3D]"
             />
           </div>
 
           <div>
             <label
               htmlFor="difficulty_level"
-              className="block text-sm font-semibold text-[#344C3D] mb-2"
+              className="block text-sm font-semibold text-[#0B1F3A] mb-2"
             >
               Difficulty Level
             </label>
@@ -135,7 +135,7 @@ function ExamInput() {
               name="difficulty_level"
               value={formData.difficulty_level}
               onChange={handleChange}
-              className="w-full border border-[#344C3D]/40 rounded-md px-5 py-3 bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-[#344C3D]"
+              className="w-full border border-[#0B1F3A]/40 rounded-md px-5 py-3 bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-[#344C3D]"
             >
               <option value="Easy">Easy</option>
               <option value="Medium">Medium</option>
@@ -148,8 +148,8 @@ function ExamInput() {
             disabled={loading}
             className={`w-full py-3 rounded-md font-semibold text-white transition ${
               loading
-                ? "bg-[#344C3D]/60 cursor-not-allowed"
-                : "bg-[#344C3D] hover:bg-[#2a3a2d]"
+                ? "bg-[#0B1F3A]/60 cursor-not-allowed"
+                : "bg-[#0B1F3A] hover:bg-[#0B1F3A]]"
             }`}
           >
             {loading ? "Preparing Exam..." : "Start My Exam"}

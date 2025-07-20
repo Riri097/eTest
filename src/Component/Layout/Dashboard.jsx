@@ -9,22 +9,22 @@ function Dashboard() {
     {
       label: "Exams Taken",
       value: 12,
-      icon: <BookOpen className="w-10 h-10 text-[#344C3D]" />,
+      icon: <BookOpen className="w-10 h-10 text-[#0B1F3A]" />,
     },
     {
       label: "Average Score",
       value: "85%",
-      icon: <BarChart2 className="w-10 h-10 text-[#344C3D]" />,
+      icon: <BarChart2 className="w-10 h-10 text-[#0B1F3A]" />,
     },
     {
       label: "Quizzes in Progress",
       value: 3,
-      icon: <Clock className="w-10 h-10 text-[#344C3D]" />,
+      icon: <Clock className="w-10 h-10 text-[#0B1F3A]" />,
     },
     {
       label: "Completed Topics",
       value: 5,
-      icon: <CheckCircle className="w-10 h-10 text-[#344C3D]" />,
+      icon: <CheckCircle className="w-10 h-10 text-[#0B1F3A]" />,
     },
   ];
 
@@ -33,7 +33,7 @@ function Dashboard() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <header className="mb-10">
-          <h1 className="text-3xl font-bold text-[#344C3D] mb-1">
+          <h1 className="text-3xl font-bold text-[#0B1F3A] mb-1">
             Welcome back, {user}!
           </h1>
           <p className="text-gray-600">
@@ -48,9 +48,9 @@ function Dashboard() {
               key={label}
               className="bg-white rounded-xl shadow hover:shadow-md transition p-5 flex items-center gap-4 border border-[#e5e7eb]"
             >
-              <div className="bg-[#BFCFBB] rounded-full p-3">{icon}</div>
+              <div className="bg-[#E7F2F8] rounded-full p-3">{icon}</div>
               <div>
-                <p className="text-2xl font-bold text-[#344C3D]">{value}</p>
+                <p className="text-2xl font-bold text-[#0B1F3A]">{value}</p>
                 <p className="text-sm text-gray-500">{label}</p>
               </div>
             </div>
@@ -61,7 +61,7 @@ function Dashboard() {
         <section className="text-center">
           <button
             onClick={() => navigate("/exam")}
-            className="bg-[#344C3D] hover:bg-[#2a3a30] text-white font-semibold px-6 py-3 rounded-lg shadow"
+            className="bg-[#0B1F3A] hover:bg-[#07203A] text-white font-semibold px-6 py-3 rounded-lg shadow"
           >
             Start New Exam
           </button>

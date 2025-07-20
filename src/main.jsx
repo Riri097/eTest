@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import "./index.css"; // Import Tailwind CSS
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import HomePage from "./Pages/HomePage";
 import AboutPage from "./Pages/AboutPage";
 import Signup from "./Component/Auth/Signup.jsx";
@@ -14,7 +15,11 @@ import Dashboard from "./Component/Layout/Dashboard.jsx";
 import ExamInput from "./Component/Layout/ExamInput.jsx";
 import Quiz from "./Component/Layout/Quiz.jsx";
 import Tutorial from "./Component/Layout/Tutorial.jsx";
-import PlanList from "./Component/Layout/PlanList.jsx";
+import Profile from "./Component/Layout/Profile.jsx";
+import Courses from "./Component/Layout/Courses.jsx";
+import Results from "./Component/Layout/Results.jsx";
+import TutorialPage from "./Pages/TutorialPage.jsx";
+// import PlanList from "./Component/Layout/PlanList.jsx";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +30,7 @@ const router = createBrowserRouter([
       { path: "about", element: <AboutPage /> },
       { path: "features", element: <FeaturePage /> },
       { path: "contact", element: <ContactPage /> },
+      { path: "guide", element: <TutorialPage /> },
       { path: "signup", element: <Signup /> },
       { path: "login", element: <Login /> },
       {
@@ -35,7 +41,9 @@ const router = createBrowserRouter([
           { path: "exam", element: <ExamInput/> },
           { path: "quiz", element: <Quiz/> },
           { path: "tutorial", element: <Tutorial/> },
-          { path: "plans", element: <PlanList/> },
+          { path: "profile", element: <Profile/> },
+          { path: "courses", element: <Courses/> },
+          { path: "results", element: <Results/> },
         ],
       },
     ],

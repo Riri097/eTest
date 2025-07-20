@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import { X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
+
 function Login({ onClose, toggleModals, setIsAuthenticated }) {
   const [formData, setFormData] = useState({ username: "", password: "" });
 
@@ -12,7 +13,7 @@ function Login({ onClose, toggleModals, setIsAuthenticated }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://127.0.0.1:8000/account/login", {
+    fetch("https://42scszck-8000.inc1.devtunnels.ms/account/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
@@ -37,14 +38,14 @@ function Login({ onClose, toggleModals, setIsAuthenticated }) {
 
   return (
     <div
-      className="fixed inset-0  bg-opacity-30 backdrop-blur-sm flex justify-center items-center z-50"
+      className="fixed inset-0 bg-opacity-30 backdrop-blur-sm flex justify-center items-center z-50"
       onClick={onClose}
     >
       <div
-        className="bg-white border-2 border-[#344C3D] rounded-xl shadow-xl w-full max-w-md p-8 relative"
+        className="bg-white border-2 border-[#0B1F3A] rounded-xl shadow-xl w-full max-w-md p-8 relative"
         onClick={(e) => e.stopPropagation()}
       >
-        <h2 className="text-3xl font-bold text-[#344C3D] mb-6 text-center">
+        <h2 className="text-3xl font-bold text-[#0B1F3A] mb-6 text-center">
           Login
         </h2>
 
@@ -56,7 +57,7 @@ function Login({ onClose, toggleModals, setIsAuthenticated }) {
             onChange={handleChange}
             value={formData.username}
             required
-            className="w-full border-2 border-[#BFCFBB] rounded-md px-4 py-3 text-[#344C3D] focus:outline-none focus:ring-2 focus:ring-[#344C3D]"
+            className="w-full border-2 border-[#E7F2F8] rounded-md px-4 py-3 text-[#0B1F3A] focus:outline-none focus:ring-2 focus:ring-[#0B1F3A]"
           />
 
           <input
@@ -66,28 +67,26 @@ function Login({ onClose, toggleModals, setIsAuthenticated }) {
             onChange={handleChange}
             value={formData.password}
             required
-            className="w-full border-2 border-[#BFCFBB] rounded-md px-4 py-3 text-[#344C3D] focus:outline-none focus:ring-2 focus:ring-[#344C3D]"
+            className="w-full border-2 border-[#E7F2F8] rounded-md px-4 py-3 text-[#0B1F3A] focus:outline-none focus:ring-2 focus:ring-[#0B1F3A]"
           />
 
-            <button
+          <button
             type="submit"
-            className="w-20  bg-[#344C3D] hover:bg-[#2a3b2d] text-white font-semibold py-3 rounded-lg shadow transition-colors duration-300"
+            className="w-20 bg-[#0B1F3A] hover:bg-[#081830] text-white font-semibold py-3 rounded-lg shadow transition-colors duration-300"
           >
             Login
           </button>
-          
         </form>
 
-        <p className="text-center mt-6 text-[#344C3D]/70">
+        <p className="text-center mt-6 text-[#0B1F3A]/70">
           Don't have an account?{" "}
           <button
-            className="text-[#344C3D] font-semibold underline hover:text-[#2a3b2d]"
+            className="text-[#0B1F3A] font-semibold underline hover:text-[#081830]"
             onClick={() => {
               onClose();
               toggleModals && toggleModals();
             }}
             type="button"
-            
           >
             Sign Up
           </button>

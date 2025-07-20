@@ -10,11 +10,11 @@ const Button = ({
   const baseStyle =
     "px-4 py-2 rounded-xl font-semibold transition duration-200";
 
-const variants = {
-  primary: "bg-[#344C3D] text-white  hover:bg-[#2c3f33] hover:shadow-md hover:shadow-[#BFCFBB]",
-  secondary:
-    "bg-gray-100 text-[#344C3D] border border-[#344C3D] hover:bg-[#a6bfa3] hover:shadow-md hover:shadow-[#BFCFBB]",
-};
+  const variants = {
+    primary: "bg-[#0B1F3A] text-white hover:bg-[#E7F2F8] hover:text-[#0B1F3A] hover:border-1 hover:border-[#0B1F3A]   hover:shadow-md hover:shadow-black",
+    secondary:
+      "bg-gray-100 text-[#0B1F3A] border border-[#0B1F3A] hover:bg-[#0B1F3A] hover:text-white hover:shadow-md hover:shadow-black",
+  };
 
   return (
     <button

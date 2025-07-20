@@ -5,7 +5,7 @@ function Tutorial() {
     <div className="max-w-4xl mx-auto px-6 py-10 bg-white rounded-lg shadow-md mt-8">
       {/* Welcome Header */}
       <header className="mb-10 text-center">
-        <h1 className="text-3xl font-bold text-[#344C3D] mb-2">
+        <h1 className="text-3xl font-bold text-[#0B1F3A] mb-2">
           Welcome to VedantaQ!
         </h1>
         <p className="text-gray-700 text-lg">
@@ -16,7 +16,7 @@ function Tutorial() {
       <section className="space-y-10">
         {/* Step 1 */}
         <div>
-          <h2 className="text-2xl font-semibold text-[#344C3D] mb-2">
+          <h2 className="text-2xl font-semibold text-[#0B1F3A] mb-2">
             1. Start a New Exam
           </h2>
           <p className="text-gray-700">
@@ -27,7 +27,7 @@ function Tutorial() {
 
         {/* Step 2 */}
         <div>
-          <h2 className="text-2xl font-semibold text-[#344C3D] mb-2">
+          <h2 className="text-2xl font-semibold text-[#0B1F3A] mb-2">
             2. Answer the Questions
           </h2>
           <p className="text-gray-700">
@@ -38,7 +38,7 @@ function Tutorial() {
 
         {/* Step 3 */}
         <div>
-          <h2 className="text-2xl font-semibold text-[#344C3D] mb-2">
+          <h2 className="text-2xl font-semibold text-[#0B1F3A] mb-2">
             3. Submit and Review
           </h2>
           <p className="text-gray-700">
@@ -48,7 +48,7 @@ function Tutorial() {
 
         {/* Step 4 */}
         <div>
-          <h2 className="text-2xl font-semibold text-[#344C3D] mb-2">
+          <h2 className="text-2xl font-semibold text-[#0B1F3A] mb-2">
             4. Practice Anytime
           </h2>
           <p className="text-gray-700">

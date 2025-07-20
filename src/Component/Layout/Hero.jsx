@@ -3,7 +3,7 @@ import Button from "../UI/Button";
 import Card from "../UI/Card";
 import { FaBrain, FaChartLine, FaClipboardList } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import hero from "../../assets/hero.png"
+import hero from "../../assets/hero.png";
 
 const features = [
   {
@@ -27,13 +27,13 @@ const Hero = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-white text-[#344C3D] flex flex-col justify-center items-center px-6">
+    <div className="min-h-screen bg-white text-[#0B1F3A] flex flex-col justify-center items-center px-6">
       
       {/* Top Hero Section with split layout */}
-      <section className="max-w-6xl w-full flex flex-col md:flex-row items-center py-5  gap-12">
+      <section className="max-w-6xl w-full flex flex-col md:flex-row items-center py-5 gap-12">
         
         {/* Left side: text content */}
-        <div className="md:w-1/1 text-left mt-15 ">
+        <div className="md:w-1/1 text-left mt-15">
           <h1 className="text-5xl font-bold mb-6">Welcome to VedantaQ</h1>
           <p className="text-lg mb-8 text-[#6B7B68]">
             Unlock your potential with personalized MCQs tailored to your interests.
@@ -51,11 +51,11 @@ const Hero = () => {
         </div>
 
         {/* Right side: image */}
-        <div className="md:w-1/2 flex justify-center ">
+        <div className="md:w-1/2 flex justify-center">
           <img
             src={hero}
             alt="Learning illustration"
-            className="max-w-100 h-auto  "
+            className="max-w-100 h-auto"
           />
         </div>
       </section>
@@ -66,8 +66,8 @@ const Hero = () => {
         ))}
       </section>
 
-      <section className="w-full bg-[#BFCFBB] py-16 px-6 text-center rounded-lg shadow-md max-w-4xl">
-        <h2 className="text-4xl font-bold text-[#344C3D] mb-4">
+      <section className="w-full bg-[#E7F2F8] py-16 px-6 text-center rounded-lg shadow-md max-w-4xl">
+        <h2 className="text-4xl font-bold text-[#0B1F3A] mb-4">
           Ready to take your learning to the next level?
         </h2>
         <p className="mb-6 text-[#6B7B68] max-w-xl mx-auto">

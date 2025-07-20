@@ -12,7 +12,7 @@ const Navbar = ({ isAuthenticated, handleLogout, openLoginModal, openSignupModal
 
   return (
     <>
-      <nav className="bg-[#344C3D] shadow-md sticky top-0 z-50">
+      <nav className="bg-[#0B1F3A] shadow-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
           {/* Logo */}
           <NavLink to="/" className="text-2xl font-bold text-white">
@@ -28,6 +28,7 @@ const Navbar = ({ isAuthenticated, handleLogout, openLoginModal, openSignupModal
                 <NavLink to="/features" className={navLinkClass}>Features</NavLink>
                 <NavLink to="/about" className={navLinkClass}>About</NavLink>
                 <NavLink to="/contact" className={navLinkClass}>Contact</NavLink>
+                <NavLink to="/guide" className={navLinkClass}>Guide</NavLink>
               </>
             )}
           </div>
@@ -58,7 +59,7 @@ const Navbar = ({ isAuthenticated, handleLogout, openLoginModal, openSignupModal
 
         {/* Mobile menu */}
         {isMenuOpen && (
-          <div className="md:hidden bg-[#BFCFBB] px-4 pb-4 flex flex-col gap-3 text-white">
+          <div className="md:hidden bg-[#E7F2F8] px-4 pb-4 flex flex-col gap-3 text-white">
             {!isAuthenticated ? (
               <>
                 {/* Navigation links */}
@@ -66,6 +67,7 @@ const Navbar = ({ isAuthenticated, handleLogout, openLoginModal, openSignupModal
                 <NavLink to="/features" className={navLinkClass} onClick={() => setIsMenuOpen(false)}>Features</NavLink>
                 <NavLink to="/about" className={navLinkClass} onClick={() => setIsMenuOpen(false)}>About</NavLink>
                 <NavLink to="/contact" className={navLinkClass} onClick={() => setIsMenuOpen(false)}>Contact</NavLink>
+                <NavLink to="/guide" className={navLinkClass} onClick={() => setIsMenuOpen(false)}>Guide</NavLink>
 
                 {/* Auth buttons */}
                 <Button variant="secondary" onClick={() => { setIsMenuOpen(false); openLoginModal(); }}>Login</Button>
@@ -81,7 +83,7 @@ const Navbar = ({ isAuthenticated, handleLogout, openLoginModal, openSignupModal
       </nav>
 
       {/* Bottom border */}
-      <div className="w-full h-[4px] bg-[#BFCFBB]"></div>
+      <div className="w-full h-[4px] bg-[#E7F2F8]"></div>
     </>
   );
 };
