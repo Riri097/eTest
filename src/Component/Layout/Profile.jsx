@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { User } from "lucide-react";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -69,7 +70,7 @@ const Profile = () => {
     setSaving(true);
 
     try {
-      const res = await fetch("https://42scszck-8000.inc1.devtunnels.ms/account/profile", {
+      const res = await fetch(baseUrl + "/account/profile", {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -97,87 +98,128 @@ const Profile = () => {
 
   if (loading)
     return (
-      <p className="text-center text-[#0B1F3A] mt-10">Loading profile...</p>
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-800 to-slate-900 flex items-center justify-center">
+        <p className="text-center text-purple-300 text-lg">Loading profile...</p>
+      </div>
     );
 
   return (
-    <div className="max-w-md mx-auto mt-10 bg-white text-[#0B1F3A] p-8 rounded-lg shadow-lg">
-      <h2 className="text-3xl font-semibold mb-6 text-[#0B1F3A]">My Profile</h2>
+    <div className="w-full min-h-screen bg-gradient-to-br from-slate-900 via-gray-800 to-slate-900 p-6 lg:p-8">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-40 -left-40 w-80 h-80 bg-pink-500/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-blue-500/15 rounded-full blur-3xl"></div>
+      </div>
 
-      {error && (
-        <div className="mb-4 bg-red-100 text-red-700 p-3 rounded font-medium">
-          {error}
+      <div className="relative z-10 max-w-4xl mx-auto">
+        <div className="text-center mb-8">
+          <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+            <User className="w-8 h-8 text-white" />
+          </div>
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent mb-3">
+            My Profile
+          </h1>
+          <p className="text-base text-gray-300 max-w-2xl mx-auto">
+            Manage your personal information and account settings
+          </p>
+          <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto mt-4 rounded-full"></div>
         </div>
-      )}
-      {successMsg && (
-        <div className="mb-4 bg-green-100 text-green-700 p-3 rounded font-medium">
-          {successMsg}
+
+        <div className="bg-white/10 backdrop-blur-md text-white p-6 lg:p-8 rounded-2xl shadow-2xl border border-white/20">
+          {error && (
+            <div className="mb-4 bg-red-500/20 backdrop-blur-sm text-red-300 p-3 rounded-lg border border-red-400/30 shadow-lg">
+              <div className="flex items-center">
+                <div className="w-2 h-2 bg-red-400 rounded-full mr-3"></div>
+                {error}
+              </div>
+            </div>
+          )}
+          {successMsg && (
+            <div className="mb-4 bg-green-500/20 backdrop-blur-sm text-green-300 p-3 rounded-lg border border-green-400/30 shadow-lg">
+              <div className="flex items-center">
+                <div className="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
+                {successMsg}
+              </div>
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} noValidate className="space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label className="block mb-2 font-semibold text-gray-300 text-sm" htmlFor="first_name">
+              First Name
+            </label>
+            <input
+              type="text"
+              name="first_name"
+              id="first_name"
+              value={formData.first_name}
+              onChange={handleChange}
+              className="w-full p-3 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 text-sm"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="block mb-2 font-semibold text-gray-300 text-sm" htmlFor="last_name">
+              Last Name
+            </label>
+            <input
+              type="text"
+              name="last_name"
+              id="last_name"
+              value={formData.last_name}
+              onChange={handleChange}
+              className="w-full p-3 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 text-sm"
+              required
+            />
+          </div>
         </div>
-      )}
 
-      <form onSubmit={handleSubmit} noValidate>
-        <label className="block mb-2 font-semibold" htmlFor="first_name">
-          First Name
-        </label>
-        <input
-          type="text"
-          name="first_name"
-          id="first_name"
-          value={formData.first_name}
-          onChange={handleChange}
-          className="w-full mb-4 p-2 rounded border border-gray-300 bg-white text-[#0B1F3A] focus:outline-none focus:ring-2 focus:ring-[#0B1F3A]"
-          required
-        />
+        <div>
+          <label className="block mb-2 font-semibold text-gray-300 text-sm" htmlFor="username">
+            Username
+          </label>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            value={formData.username}
+            onChange={handleChange}
+            className="w-full p-3 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 text-sm"
+            required
+          />
+        </div>
 
-        <label className="block mb-2 font-semibold" htmlFor="last_name">
-          Last Name
-        </label>
-        <input
-          type="text"
-          name="last_name"
-          id="last_name"
-          value={formData.last_name}
-          onChange={handleChange}
-          className="w-full mb-4 p-2 rounded border border-gray-300 bg-white text-[#0B1F3A] focus:outline-none focus:ring-2 focus:ring-[#0B1F3A]"
-          required
-        />
+        <div>
+          <label className="block mb-2 font-semibold text-gray-300 text-sm" htmlFor="email">
+            Email Address
+          </label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            value={formData.email}
+            onChange={handleChange}
+            className="w-full p-3 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 text-sm"
+            required
+          />
+        </div>
 
-        <label className="block mb-2 font-semibold" htmlFor="username">
-          Username
-        </label>
-        <input
-          type="text"
-          name="username"
-          id="username"
-          value={formData.username}
-          onChange={handleChange}
-          className="w-full mb-4 p-2 rounded border border-gray-300 bg-white text-[#0B1F3A] focus:outline-none focus:ring-2 focus:ring-[#0B1F3A]"
-          required
-        />
-
-        <label className="block mb-2 font-semibold" htmlFor="email">
-          Email Address
-        </label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          value={formData.email}
-          onChange={handleChange}
-          className="w-full mb-6 p-2 rounded border border-gray-300 bg-white text-[#0B1F3A] focus:outline-none focus:ring-2 focus:ring-[#0B1F3A]"
-          required
-        />
-
-        <button
-          type="submit"
-          disabled={saving}
-          className={`w-full py-3 rounded bg-[#0B1F3A] text-white font-bold hover:bg-[#132E51] transition ${
-            saving ? "opacity-50 cursor-not-allowed" : ""
-          }`}
-        >
-          {saving ? "Saving..." : "Update Profile"}
-        </button>
+        <div className="flex justify-center pt-3">
+          <button
+            type="submit"
+            disabled={saving}
+            className={`px-6 py-3 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold shadow-xl transition-all duration-300 transform hover:scale-105 text-sm ${
+              saving ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+          >
+            {saving ? "Saving..." : "Update Profile"}
+          </button>
+        </div>
       </form>
+        </div>
+      </div>
     </div>
   );
 };

@@ -10,6 +10,7 @@ import { ToastContainer } from "react-toastify";
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [modalType, setModalType] = useState(null);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -36,6 +37,14 @@ function App() {
     localStorage.removeItem("token");
   };
 
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
+  const closeSidebar = () => {
+    setSidebarOpen(false);
+  };
+
   const username = localStorage.getItem("username") || "User";
 
   return (
@@ -46,14 +55,30 @@ function App() {
           openLoginModal={openLoginModal}
           openSignupModal={openSignupModal}
           handleLogout={handleLogout}
+          toggleSidebar={toggleSidebar}
         />
 
         <div className="flex min-h-[calc(100vh-4rem)]">
           {isAuthenticated && (
-            <Sidebar username={username} handleLogout={handleLogout} />
+            <>
+              <Sidebar 
+                username={username} 
+                handleLogout={handleLogout}
+                sidebarOpen={sidebarOpen}
+                closeSidebar={closeSidebar}
+              />
+              
+              {/* Mobile Overlay */}
+              {sidebarOpen && (
+                              <div 
+                className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 lg:hidden"
+                onClick={() => setSidebarOpen(false)}
+              ></div>
+              )}
+            </>
           )}
 
-          <main className={`flex-1${isAuthenticated ? "ml-64" : ""}`}>
+          <main className="flex-1">
             <Outlet
               context={{
                 isAuthenticated,

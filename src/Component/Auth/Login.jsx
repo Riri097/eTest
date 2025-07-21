@@ -41,7 +41,6 @@ function Login({ onClose, toggleModals, setIsAuthenticated }) {
       className="fixed inset-0 bg-black/40 backdrop-blur-sm flex justify-center items-center z-50"
       onClick={onClose}
     >
-      {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-600/20 rounded-full blur-3xl"></div>
         <div className="absolute bottom-40 -left-40 w-80 h-80 bg-pink-600/20 rounded-full blur-3xl"></div>

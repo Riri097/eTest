@@ -65,7 +65,7 @@ const Hero = () => {
         <div className="absolute bottom-40 right-40 w-60 h-60 bg-pink-400/20 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="relative z-10 flex flex-col justify-center items-center px-6">
+      <div className="relative z-10 flex flex-col justify-center items-center px-6 pb-0">
         <section className="max-w-6xl w-full flex flex-col md:flex-row items-center py-20 gap-12">
           <div className="md:w-1/2 text-left">
             <h1 className="text-6xl font-extrabold mb-6 bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent leading-tight">
@@ -104,7 +104,15 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="md:w-1/2 flex justify-center"></div>
+          <div className="md:w-1/2 flex justify-center">
+            <div className="relative">
+              <img 
+                src="/src/assets/final.png" 
+                alt="VedantaQ Learning Platform"
+                className="w-full max-w-lg h-auto"
+              />
+            </div>
+          </div>
         </section>
 
         <section className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
@@ -114,7 +122,7 @@ const Hero = () => {
         </section>
 
         <section className="w-full max-w-6xl relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-indigo-400/50 to-purple-600/50 backdrop-blur-sm rounded-3xl"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-pink-400/40 to-indigo-400/40 backdrop-blur-sm rounded-3xl"></div>
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20 rounded-3xl"></div>
 
           <div className="relative py-16 px-8 text-center">
@@ -139,31 +147,55 @@ const Hero = () => {
               {highlights.map(({ icon: Icon, title, description, gradient }) => (
                 <div key={title} className="group cursor-pointer">
                   <div className="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10 shadow-xl">
-                    <div className={`w-16 h-16 bg-gradient-to-br ${gradient} rounded-2xl flex items-center justify-center mb-6 shadow-lg`}>
-                      <Icon size={28} className="text-white" />
+                    <div className="flex items-center gap-3 mb-6">
+                      <Icon size={40} className="text-orange-400" />
+                      <h3 className="text-2xl font-bold text-white">{title}</h3>
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-4">{title}</h3>
                     <p className="text-gray-300 leading-relaxed">{description}</p>
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="bg-gradient-to-r from-orange-500/20 to-red-500/20 backdrop-blur-md rounded-2xl p-8 border border-orange-400/30">
-              <h3 className="text-3xl font-bold text-white mb-4">
-                Ready to unlock your potential?
-              </h3>
-              <p className="mb-8 text-gray-300 max-w-2xl mx-auto text-lg">
-                Join thousands of successful learners who've transformed their knowledge with VedantaQ's innovative approach.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="cta" onClick={() => navigate("/signup")}>
-                  <FaRocket className="inline mr-2" />
-                  Begin Your Journey
-                </Button>
-                <Button variant="secondary" onClick={() => navigate("/pricing")}>
-                  View Plans
-                </Button>
+            <div className="relative overflow-hidden mt-16">
+              <div className="flex">
+                <div className="flex items-center justify-center min-w-full">
+                  <div className="flex items-center gap-12 text-center">
+                    <div className="flex flex-col items-center">
+                      <div className="text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                        50K+
+                      </div>
+                      <div className="text-gray-400 text-sm mt-1">Happy Learners</div>
+                    </div>
+                    
+                    <div className="w-px h-12 bg-gradient-to-b from-purple-400 to-pink-400 opacity-50"></div>
+                    
+                    <div className="flex flex-col items-center">
+                      <div className="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                        98%
+                      </div>
+                      <div className="text-gray-400 text-sm mt-1">Success Rate</div>
+                    </div>
+                    
+                    <div className="w-px h-12 bg-gradient-to-b from-cyan-400 to-blue-400 opacity-50"></div>
+                    
+                    <div className="flex flex-col items-center">
+                      <div className="text-4xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
+                        1M+
+                      </div>
+                      <div className="text-gray-400 text-sm mt-1">Questions Solved</div>
+                    </div>
+                    
+                    <div className="w-px h-12 bg-gradient-to-b from-green-400 to-emerald-400 opacity-50"></div>
+                    
+                    <div className="flex flex-col items-center">
+                      <div className="text-4xl font-bold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
+                        24/7
+                      </div>
+                      <div className="text-gray-400 text-sm mt-1">AI Support</div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

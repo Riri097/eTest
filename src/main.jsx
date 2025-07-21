@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import App from "./App";
-import "./index.css"; // Import Tailwind CSS
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import App from "./App.jsx";
+import "./index.css";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import HomePage from "./Pages/HomePage";
 import AboutPage from "./Pages/AboutPage";
@@ -18,14 +18,14 @@ import Tutorial from "./Component/Layout/Tutorial.jsx";
 import Profile from "./Component/Layout/Profile.jsx";
 import Courses from "./Component/Layout/Courses.jsx";
 import Results from "./Component/Layout/Results.jsx";
+import Support from "./Component/Layout/Support.jsx";
+import Settings from "./Component/Layout/Settings.jsx";
 import TutorialPage from "./Pages/TutorialPage.jsx";
-
-// import PlanList from "./Component/Layout/PlanList.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />, // contains Navbar + Footer
+    element: <App />,
     children: [
       { path: "", element: <HomePage /> },
       { path: "about", element: <AboutPage /> },
@@ -36,8 +36,8 @@ const router = createBrowserRouter([
       { path: "login", element: <Login /> },
 
       {
-        path: "", // blank path, acts as wrapper for protected routes
-        element: <Auth />, // this gets context from App Outlet!
+        path: "",
+        element: <Auth />,
         children: [
           { path: "dashboard", element: <Dashboard /> },
           { path: "exam", element: <ExamInput/> },
@@ -46,6 +46,8 @@ const router = createBrowserRouter([
           { path: "profile", element: <Profile/> },
           { path: "courses", element: <Courses/> },
           { path: "results", element: <Results/> },
+          { path: "support", element: <Support/> },
+          { path: "settings", element: <Settings/> },
         ],
       },
     ],

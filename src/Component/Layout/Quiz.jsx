@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, FileText } from "lucide-react";
 import { toast } from "react-toastify";
 import Latex from "react-latex-next";
 
@@ -94,91 +94,121 @@ function Quiz() {
   const options = question.options.split("@@@").map((opt) => opt.trim());
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-white rounded-md shadow-md mt-8">
-      {/* Timer */}
-      <div className="text-right font-semibold text-[#0B1F3A] mb-4 text-lg">
-        Time Left:{" "}
-        <span>
-          {Math.floor(timeLeft / 60)}:{String(timeLeft % 60).padStart(2, "0")}
-        </span>
+    <div className="w-full min-h-screen bg-gradient-to-br from-slate-900 via-gray-800 to-slate-900 p-6 lg:p-8">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-40 -left-40 w-80 h-80 bg-pink-500/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 left-1/3 w-72 h-72 bg-green-500/10 rounded-full blur-3xl"></div>
       </div>
 
-      {/* Question number */}
-      <h2 className="text-xl font-semibold text-[#0B1F3A] mb-2">
-        Question {currentIndex + 1} of {questions.length}
-      </h2>
+      <div className="relative z-10 max-w-4xl mx-auto">
+        <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 mb-6 border border-white/20">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                <FileText className="w-4 h-4 text-white" />
+              </div>
+              <div>
+                <h1 className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                  Question {currentIndex + 1} of {questions.length}
+                </h1>
+                <p className="text-gray-400 text-sm">Stay focused and take your time</p>
+              </div>
+            </div>
+            
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2 border border-white/20">
+              <div className="text-center">
+                <div className={`text-xl font-bold ${timeLeft < 60 ? 'text-red-400' : 'text-green-400'}`}>
+                  {Math.floor(timeLeft / 60)}:{String(timeLeft % 60).padStart(2, "0")}
+                </div>
+                <p className="text-gray-400 text-xs">Time Left</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-      {/* Question Text */}
-      <p className="mb-6 text-gray-700">
-        <Latex>{question.question}</Latex>
-      </p>
+        <div className="bg-white/10 backdrop-blur-md rounded-xl shadow-xl p-6 border border-white/20">
+          <div className="mb-6">
+            <h2 className="text-lg font-semibold text-white mb-4 leading-relaxed">
+              <Latex>{question.question}</Latex>
+            </h2>
+          </div>
 
-      {/* Options */}
-      <div className="space-y-3">
-        {["A", "B", "C", "D"].map((opt, i) => (
-          <label
-            key={opt}
-            className={`flex items-center gap-3 cursor-pointer rounded-md border px-4 py-3
-              ${
-                answers[currentIndex] === opt
-                  ? "bg-[#0B1F3A] text-white border-[#0B1F3A]"
-                  : "bg-white text-[#0B1F3A] border-gray-300 hover:bg-[#e0e7ff]"
-              } transition-colors duration-200`}
-          >
-            <input
-              type="radio"
-              name={`q-${currentIndex}`}
-              value={opt}
-              checked={answers[currentIndex] === opt}
-              onChange={handleAnswer}
-              className="form-radio text-[#0B1F3A]"
-            />
-            <span>
-              {opt}: <Latex>{options[i]}</Latex>
-            </span>
-          </label>
-        ))}
-      </div>
+          <div className="space-y-3 mb-6">
+            {["A", "B", "C", "D"].map((opt, i) => (
+              <label
+                key={opt}
+                className={`flex items-center gap-3 cursor-pointer rounded-lg border p-4 transition-all duration-200 hover:scale-[1.01]
+                  ${
+                    answers[currentIndex] === opt
+                      ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white border-purple-500 shadow-lg"
+                      : "bg-white/5 backdrop-blur-sm text-gray-300 border-white/20 hover:bg-white/10 hover:border-purple-400"
+                  }`}
+              >
+                <input
+                  type="radio"
+                  name={`q-${currentIndex}`}
+                  value={opt}
+                  checked={answers[currentIndex] === opt}
+                  onChange={handleAnswer}
+                  className="sr-only"
+                />
+                <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
+                  answers[currentIndex] === opt
+                    ? "border-white bg-white"
+                    : "border-gray-400"
+                }`}>
+                  {answers[currentIndex] === opt && (
+                    <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                  )}
+                </div>
+                <span className="flex-1">
+                  <span className="font-semibold mr-2">{opt}.</span>
+                  <Latex>{options[i]}</Latex>
+                </span>
+              </label>
+            ))}
+          </div>
 
-      {/* Navigation Buttons */}
-      <div className="flex justify-between mt-8">
-        <button
-          onClick={() => setCurrentIndex((prev) => prev - 1)}
-          disabled={currentIndex === 0}
-          className={`flex items-center gap-1 px-5 py-2 rounded-md font-semibold border border-[#0B1F3A] transition
-            ${
-              currentIndex === 0
-                ? "text-gray-400 border-gray-400 cursor-not-allowed"
-                : "bg-white text-[#0B1F3A] hover:bg-[#e0e7ff]"
-            }`}
-        >
-          <ChevronLeft size={20} />
-          Prev
-        </button>
+          <div className="flex flex-col sm:flex-row justify-between gap-3">
+            <button
+              onClick={() => setCurrentIndex((prev) => prev - 1)}
+              disabled={currentIndex === 0}
+              className={`flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-200
+                ${
+                  currentIndex === 0
+                    ? "text-gray-500 border border-gray-600 cursor-not-allowed"
+                    : "bg-white/10 backdrop-blur-sm text-gray-300 border border-white/20 hover:bg-white/20 hover:text-white hover:scale-105"
+                }`}
+            >
+              <ChevronLeft size={18} />
+              Previous
+            </button>
 
-        <button
-          onClick={() => setCurrentIndex((prev) => prev + 1)}
-          disabled={currentIndex === questions.length - 1}
-          className={`flex items-center gap-1 px-5 py-2 rounded-md font-semibold border border-[#0B1F3A] transition
-            ${
-              currentIndex === questions.length - 1
-                ? "text-gray-400 border-gray-400 cursor-not-allowed"
-                : "bg-white text-[#0B1F3A] hover:bg-[#e0e7ff]"
-            }`}
-        >
-          Next
-          <ChevronRight size={20} />
-        </button>
-      </div>
+            <div className="flex gap-3">
+              <button
+                onClick={() => setCurrentIndex((prev) => prev + 1)}
+                disabled={currentIndex === questions.length - 1}
+                className={`flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-200
+                  ${
+                    currentIndex === questions.length - 1
+                      ? "text-gray-500 border border-gray-600 cursor-not-allowed"
+                      : "bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white hover:scale-105"
+                  }`}
+              >
+                Next
+                <ChevronRight size={18} />
+              </button>
 
-      {/* Submit Button */}
-      <div className="mt-6 text-center">
-        <button
-          onClick={handleSubmit}
-          className="bg-[#0B1F3A] hover:bg-[#081933] transition text-white font-semibold px-6 py-3 rounded-md"
-        >
-          Submit
-        </button>
+              <button
+                onClick={handleSubmit}
+                className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 transition-all duration-300 text-white font-semibold px-6 py-3 rounded-lg shadow-lg transform hover:scale-105"
+              >
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

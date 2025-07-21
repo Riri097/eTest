@@ -1,10 +1,10 @@
+import React from "react";
+
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-slate-900 via-gray-800 to-slate-900 text-white py-12 mt-8">
+    <footer className="bg-gradient-to-r from-slate-900 via-gray-800 to-slate-900 text-white py-12 border-t-2 border-white">
       <div className="max-w-7xl mx-auto px-4">
-        {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          {/* Brand Section */}
           <div className="text-center md:text-left">
             <h2 className="text-3xl font-bold mb-3 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
               VedantaQ
@@ -14,7 +14,6 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Quick Links */}
           <div className="text-center">
             <h3 className="text-lg font-semibold mb-4 text-purple-400">Quick Links</h3>
             <div className="space-y-2">
@@ -36,7 +35,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Support */}
           <div className="text-center md:text-right">
             <h3 className="text-lg font-semibold mb-4 text-purple-400">Support</h3>
             <div className="space-y-2">
@@ -53,10 +51,9 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Section */}
         <div className="border-t border-gray-600 pt-6 text-center">
           <p className="text-gray-400 text-sm">
-            &copy; {new Date().getFullYear()} VedantaQ. All rights reserved. Made with ❤️ for learners worldwide.
+            &copy; {new Date().getFullYear()} VedantaQ. All rights reserved. Made with love for learners worldwide.
           </p>
         </div>
       </div>

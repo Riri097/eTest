@@ -51,7 +51,6 @@ const features = [
 const Features = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-500 to-slate-900  px-6 py-20 overflow-hidden">
-      {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl"></div>
         <div className="absolute top-40 -left-40 w-80 h-80 bg-pink-500/20 rounded-full blur-3xl"></div>
@@ -72,7 +71,6 @@ const Features = () => {
               key={idx}
               className="bg-white/8 backdrop-blur-md text-white p-6 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 border border-white/15 group relative overflow-hidden"
             >
-              {/* Subtle background pattern */}
               <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full blur-xl"></div>
               
               <div className="relative z-10">
@@ -88,7 +86,6 @@ const Features = () => {
                   {feature.description}
                 </p>
                 
-                {/* Additional benefit points */}
                 <div className="space-y-2">
                   {idx === 0 && (
                     <div className="flex items-center gap-2 text-xs text-purple-300">
