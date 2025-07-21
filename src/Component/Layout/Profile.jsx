@@ -12,9 +12,10 @@ const Profile = () => {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState(null);
   const [successMsg, setSuccessMsg] = useState(null);
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
   useEffect(() => {
-    fetch("https://42scszck-8000.inc1.devtunnels.ms/account/profile", {
+    fetch(baseUrl + "/account/profile", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },

@@ -19,6 +19,7 @@ import Profile from "./Component/Layout/Profile.jsx";
 import Courses from "./Component/Layout/Courses.jsx";
 import Results from "./Component/Layout/Results.jsx";
 import TutorialPage from "./Pages/TutorialPage.jsx";
+
 // import PlanList from "./Component/Layout/PlanList.jsx";
 
 const router = createBrowserRouter([
@@ -33,6 +34,7 @@ const router = createBrowserRouter([
       { path: "guide", element: <TutorialPage /> },
       { path: "signup", element: <Signup /> },
       { path: "login", element: <Login /> },
+
       {
         path: "", // blank path, acts as wrapper for protected routes
         element: <Auth />, // this gets context from App Outlet!

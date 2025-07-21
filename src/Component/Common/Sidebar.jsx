@@ -10,20 +10,28 @@ import {
   HelpCircle,
   Settings,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Sidebar = ({ username }) => {
   const linkClass = ({ isActive }) =>
-    `flex items-center gap-3 px-4 py-3 rounded-md hover:bg-[#E7F2F8] transition ${
-      isActive ? "bg-[#E7F2F8] font-semibold" : "font-normal"
+    `flex items-center gap-3 px-4 py-3 rounded-md transition ${
+      isActive
+        ? "bg-[#E7F2F8] font-semibold text-[#0B1F3A]"
+        : "hover:bg-[#E7F2F8] text-[#0B1F3A]"
     }`;
 
   return (
-    <aside className="w-64 bg-white text-[#0B1F3A] min-h-screen border-r border-[#E7F2F8]/50 flex flex-col">
+    <aside className="w-64 bg-white text-[#0B1F3A] min-h-screen border-r border-[#E7F2F8] flex flex-col shadow-sm">
       {/* Header */}
-      <div className="px-6 py-5 border-b border-[#E7F2F8]/40 flex items-center gap-3">
-        <User className="w-6 h-6" />
-        <span className="font-semibold text-lg truncate">{username || "User"}</span>
-      </div>
+      <Link
+  to="/profile"
+  className="px-6 py-5 border-b border-[#E7F2F8] flex items-center gap-3 bg-[#F8FBFC] hover:bg-[#E7F2F8] transition"
+>
+  <User className="w-6 h-6" />
+  <span className="font-semibold text-lg truncate">
+    {username || "User"}
+  </span>
+</Link>
 
       {/* Navigation Links */}
       <nav className="flex-1 flex flex-col mt-4 gap-1 px-2">
@@ -61,10 +69,7 @@ const Sidebar = ({ username }) => {
           <Settings className="w-5 h-5" />
           Settings
         </NavLink>
-        <NavLink to="/profile" className={linkClass}>
-          <Settings className="w-5 h-5" />
-          Profile
-        </NavLink>
+
       </nav>
     </aside>
   );

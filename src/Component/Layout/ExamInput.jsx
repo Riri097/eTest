@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 function ExamInput() {
@@ -20,15 +20,15 @@ function ExamInput() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
+    const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
-    fetch("http://127.0.0.1:8000/exam/generate-questions", {
+
+    fetch(baseUrl + "/exam/generate-questions", {
       method: "POST",
-      headers: { 
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-     },
+      headers: { "Content-Type": "application/json", "Authorization": `Bearer ${localStorage.getItem("token")}` },
       body: JSON.stringify(formData),
     })
+    
       .then((res) => {
         if (!res.ok) throw new Error("Network response was not ok");
         return res.json();
@@ -37,6 +37,9 @@ function ExamInput() {
         setLoading(false);
         if (data.success) {
           localStorage.setItem("questions", JSON.stringify(data.questions));
+          localStorage.setItem("topic", formData.topic);
+          localStorage.setItem("no_of_questions", formData.no_of_questions);
+
           toast.success("Your exam is ready!");
           navigate("/quiz");
         } else {
@@ -50,68 +53,51 @@ function ExamInput() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] ml-64 flex justify-center items-center bg-[#BFCFBB]/20 p-6">
-      {/* 
-        min-h calc: subtract your Navbar height if fixed (assumed 4rem here)
-        ml-64: margin left = sidebar width (16rem)
-        background color is light green with opacity
-      */}
-      <div className="w-full max-w-xl bg-white rounded-xl shadow-md p-10">
-        <h1 className="text-3xl font-bold text-[#0B1F3A] mb-4">
+    <div className="min-h-screen bg-gray-50 py-10 px-4 flex items-center justify-center">
+      <div className="max-w-xl w-full bg-white rounded-xl shadow-lg p-8">
+        <h1 className="text-2xl md:text-3xl font-bold text-[#0B1F3A] mb-2">
           Ready to Take Your Test?
         </h1>
-        <p className="text-[#0B1F3A]/80 mb-8">
+        <p className="text-gray-600 mb-6">
           Fill in the details below to begin your personalized exam experience.
         </p>
 
-        <form onSubmit={handleSubmit} className="space-y-7">
+        <form onSubmit={handleSubmit} className="space-y-5">
           <div>
-            <label
-              htmlFor="topic"
-              className="block text-sm font-semibold text-[#0B1F3A] mb-2"
-            >
+            <label className="block text-sm font-medium text-gray-700 mb-1">
               Exam Topic
             </label>
             <input
-              id="topic"
               type="text"
               name="topic"
               value={formData.topic}
               onChange={handleChange}
               placeholder="e.g. Lokesewa, IOE, CEE, CMAT"
               required
-              className="w-full border border-[#0B1F3A]/40 rounded-md px-5 py-3 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#344C3D]"
+              className="w-full border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#0B1F3A]"
             />
           </div>
 
           <div>
-            <label
-              htmlFor="description"
-              className="block text-sm font-semibold text-[#0B1F3A] mb-2"
-            >
-              Description
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+             Description
             </label>
             <textarea
-              id="description"
               name="description"
               value={formData.description}
               onChange={handleChange}
-              placeholder="Briefly describe the subject or focus area"
+              placeholder="Give us a brief about the subject or focus area"
               rows={4}
               required
-              className="w-full border border-[#0B1F3A]/40 rounded-md px-5 py-3 resize-none shadow-sm focus:outline-none focus:ring-2 focus:ring-[#344C3D]"
+              className="w-full border rounded-md px-4 py-2 resize-none focus:outline-none focus:ring-2 focus:ring-[#0B1F3A]"
             />
           </div>
 
           <div>
-            <label
-              htmlFor="no_of_questions"
-              className="block text-sm font-semibold text-[#0B1F3A] mb-2"
-            >
+            <label className="block text-sm font-medium text-gray-700 mb-1">
               Number of Questions
             </label>
             <input
-              id="no_of_questions"
               type="number"
               name="no_of_questions"
               value={formData.no_of_questions}
@@ -119,23 +105,19 @@ function ExamInput() {
               min={1}
               max={100}
               required
-              className="w-full border border-[#0B1F3A]/40 rounded-md px-5 py-3 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#344C3D]"
+              className="w-full border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#0B1F3A]"
             />
           </div>
 
           <div>
-            <label
-              htmlFor="difficulty_level"
-              className="block text-sm font-semibold text-[#0B1F3A] mb-2"
-            >
+            <label className="block text-sm font-medium text-gray-700 mb-1">
               Difficulty Level
             </label>
             <select
-              id="difficulty_level"
               name="difficulty_level"
               value={formData.difficulty_level}
               onChange={handleChange}
-              className="w-full border border-[#0B1F3A]/40 rounded-md px-5 py-3 bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-[#344C3D]"
+              className="w-full border rounded-md px-4 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-[#0B1F3A]"
             >
               <option value="Easy">Easy</option>
               <option value="Medium">Medium</option>
@@ -146,10 +128,10 @@ function ExamInput() {
           <button
             type="submit"
             disabled={loading}
-            className={`w-full py-3 rounded-md font-semibold text-white transition ${
+            className={`w-full text-white font-semibold py-3 px-6 rounded-md transition ${
               loading
-                ? "bg-[#0B1F3A]/60 cursor-not-allowed"
-                : "bg-[#0B1F3A] hover:bg-[#0B1F3A]]"
+                ? "bg-[#0B1F3A]/50 cursor-not-allowed"
+                : "bg-[#0B1F3A] hover:bg-[#132d56]"
             }`}
           >
             {loading ? "Preparing Exam..." : "Start My Exam"}
