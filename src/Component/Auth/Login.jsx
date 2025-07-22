@@ -14,7 +14,7 @@ function Login({ onClose, toggleModals, setIsAuthenticated }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch(baseUrl + "/account/login", {
+    fetch(baseUrl + "/account/login/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
