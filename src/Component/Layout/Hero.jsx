@@ -58,7 +58,7 @@ const Hero = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-400 to-slate-900 overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-slate-400 via-gray-400 to-slate-900 overflow-hidden">
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-20 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl"></div>
         <div className="absolute top-40 -left-40 w-80 h-80 bg-pink-500/20 rounded-full blur-3xl"></div>
