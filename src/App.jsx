@@ -68,7 +68,6 @@ function App() {
                 closeSidebar={closeSidebar}
               />
               
-              {/* Mobile Overlay */}
               {sidebarOpen && (
                               <div 
                 className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 lg:hidden"
