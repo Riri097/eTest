@@ -25,7 +25,7 @@ function Signup({ onClose, toggleModals }) {
       return;
     }
 
-    fetch(baseUrl + "account/signup", {
+    fetch(baseUrl + "/account/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
