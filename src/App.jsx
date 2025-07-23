@@ -93,7 +93,7 @@ function App() {
         <Footer />
       </div>
 
-      {modalType === "login"  && !localStorage.getItem("token") && (
+      {modalType === "login" && !isAuthenticated && (
         <Login
           onClose={closeModal}
           setIsAuthenticated={setIsAuthenticated}
@@ -101,7 +101,7 @@ function App() {
         />
       )}
 
-      {modalType === "signup" && (
+      {modalType === "signup" && !isAuthenticated && (
         <Signup
           onClose={closeModal}
           setIsAuthenticated={setIsAuthenticated}

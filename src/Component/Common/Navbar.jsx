@@ -1,58 +1,98 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { Menu, X, LogIn, UserPlus, LogOut, Home, Sparkles, Info, Phone, UserCheck } from "lucide-react";
-import GradientNavLink from "../UI/GradientNavlink";
 import Button from "../UI/Button";
+import logo from "../../assets/vedantalogo.png";
 
 const Navbar = ({ isAuthenticated, handleLogout, openLoginModal, openSignupModal, toggleSidebar }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+  
+  const handleMobileNavClick = (path) => {
+    console.log('Mobile nav clicked:', path); // Debug log
+    setIsMenuOpen(false);
+    setTimeout(() => {
+      navigate(path);
+    }, 100); // Small delay to ensure menu closes first
+  };
+
+  const isActiveRoute = (path) => {
+    if (path === '/') {
+      return location.pathname === '/';
+    }
+    return location.pathname === path;
+  };
 
   return (
     <>
-      <nav className="bg-gradient-to-r from-slate-900 via-gray-700 to-slate-900 shadow-md sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <nav className="bg-slate-900 shadow-md sticky top-0 z-50">
+        <div className="absolute inset-0 bg-[#75E6DA]/10"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2 flex justify-between items-center relative z-10">
           {isAuthenticated && (
             <button
               onClick={toggleSidebar}
-              className="lg:hidden text-white focus:outline-none mr-3"
+              className="lg:hidden text-[#1E3A8A] focus:outline-none mr-3"
               aria-label="Toggle sidebar"
             >
               <Menu size={24} />
             </button>
           )}
           
-          <NavLink
-            to="/"
-            className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
-          >
-            VedantaQ
-          </NavLink>
+<NavLink to="/" className="flex items-center gap-2 sm:gap-3">
+  <img
+    src={logo}
+    alt="VedantaQ Logo"
+    className="h-10 w-auto object-contain sm:h-12 md:h-14"
+  />
+</NavLink>
 
-          <div className="hidden md:flex items-center space-x-6">
+
+          <div className="hidden md:flex items-center space-x-4 lg:space-x-6">
             {!isAuthenticated && (
               <>
-                <GradientNavLink to="/" icon={Home} label="Home" />
-                <GradientNavLink to="/features" icon={Sparkles} label="Features" />
-                <GradientNavLink to="/about" icon={Info} label="About" />
-                <GradientNavLink to="/contact" icon={Phone} label="Contact" />
-                <GradientNavLink to="/guide" icon={UserCheck} label="Guide" />
+                <NavLink to="/" end className={({ isActive }) => 
+                  `font-semibold transition-colors ${isActive ? 'text-orange-200 underline decoration-2 decoration-orange-200' : 'text-white hover:text-[#75E6DA]'}`
+                }>
+                  Home
+                </NavLink>
+                <NavLink to="/features" className={({ isActive }) => 
+                  `font-semibold transition-colors ${isActive ? 'text-orange-200 underline decoration-2 decoration-orange-200' : 'text-white hover:text-[#75E6DA]'}`
+                }>
+                  Features
+                </NavLink>
+                <NavLink to="/about" className={({ isActive }) => 
+                  `font-semibold transition-colors ${isActive ? 'text-orange-200 underline decoration-2 decoration-orange-200' : 'text-white hover:text-[#75E6DA]'}`
+                }>
+                  About
+                </NavLink>
+                <NavLink to="/contact" className={({ isActive }) => 
+                  `font-semibold transition-colors ${isActive ? 'text-orange-200 underline decoration-2 decoration-orange-200' : 'text-white hover:text-[#75E6DA]'}`
+                }>
+                  Contact
+                </NavLink>
+                <NavLink to="/guide" className={({ isActive }) => 
+                  `font-semibold transition-colors ${isActive ? 'text-orange-200 underline decoration-2 decoration-orange-200' : 'text-white hover:text-[#75E6DA]'}`
+                }>
+                  Guide
+                </NavLink>
               </>
             )}
           </div>
 
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-3 lg:gap-4">
             {!isAuthenticated ? (
               <>
                 <Button variant="secondary" onClick={openLoginModal}>
-                  <LogIn size={16} className="inline mr-1" /> Login
+                  Login
                 </Button>
                 <Button variant="primary" onClick={openSignupModal} className="border border-white">
-                  <UserPlus size={16} className="inline mr-1" /> Signup
+                  Signup
                 </Button>
               </>
             ) : (
               <Button variant="primary" onClick={handleLogout}>
-                <LogOut size={16} className="inline mr-1" /> Logout
+                Logout
               </Button>
             )}
           </div>
@@ -61,7 +101,7 @@ const Navbar = ({ isAuthenticated, handleLogout, openLoginModal, openSignupModal
             <div className="md:hidden">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-white focus:outline-none"
+                className="text-[#1E3A8A] focus:outline-none"
                 aria-label="Toggle menu"
               >
                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -71,25 +111,97 @@ const Navbar = ({ isAuthenticated, handleLogout, openLoginModal, openSignupModal
         </div>
 
         {isMenuOpen && (
-          <div className="md:hidden bg-[#0B1F3A] px-4 pb-4 flex flex-col gap-3 text-white">
+          <div className="md:hidden bg-[#0B1F3A] px-4 pb-4 flex flex-col gap-1 text-white relative z-60">
             {!isAuthenticated ? (
               <>
-                <GradientNavLink to="/" icon={Home} label="Home" onClick={() => setIsMenuOpen(false)} />
-                <GradientNavLink to="/features" icon={Sparkles} label="Features" onClick={() => setIsMenuOpen(false)} />
-                <GradientNavLink to="/about" icon={Info} label="About" onClick={() => setIsMenuOpen(false)} />
-                <GradientNavLink to="/contact" icon={Phone} label="Contact" onClick={() => setIsMenuOpen(false)} />
-                <GradientNavLink to="/guide" icon={UserCheck} label="Guide" onClick={() => setIsMenuOpen(false)} />
+                <button 
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handleMobileNavClick('/');
+                  }}
+                  className={`font-semibold transition-colors py-3 px-2 text-left rounded-lg w-full touch-manipulation ${
+                    isActiveRoute('/') 
+                      ? 'text-orange-200 underline decoration-2 decoration-orange-200 bg-slate-800/50' 
+                      : 'text-white hover:text-[#75E6DA] hover:bg-slate-800/30 active:bg-slate-700/50'
+                  }`}
+                >
+                  Home
+                </button>
+                <button 
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handleMobileNavClick('/features');
+                  }}
+                  className={`font-semibold transition-colors py-3 px-2 text-left rounded-lg w-full touch-manipulation ${
+                    isActiveRoute('/features') 
+                      ? 'text-orange-200 underline decoration-2 decoration-orange-200 bg-slate-800/50' 
+                      : 'text-white hover:text-[#75E6DA] hover:bg-slate-800/30 active:bg-slate-700/50'
+                  }`}
+                >
+                  Features
+                </button>
+                <button 
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handleMobileNavClick('/about');
+                  }}
+                  className={`font-semibold transition-colors py-3 px-2 text-left rounded-lg w-full touch-manipulation ${
+                    isActiveRoute('/about') 
+                      ? 'text-orange-200 underline decoration-2 decoration-orange-200 bg-slate-800/50' 
+                      : 'text-white hover:text-[#75E6DA] hover:bg-slate-800/30 active:bg-slate-700/50'
+                  }`}
+                >
+                  About
+                </button>
+                <button 
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handleMobileNavClick('/contact');
+                  }}
+                  className={`font-semibold transition-colors py-3 px-2 text-left rounded-lg w-full touch-manipulation ${
+                    isActiveRoute('/contact') 
+                      ? 'text-orange-200 underline decoration-2 decoration-orange-200 bg-slate-800/50' 
+                      : 'text-white hover:text-[#75E6DA] hover:bg-slate-800/30 active:bg-slate-700/50'
+                  }`}
+                >
+                  Contact
+                </button>
+                <button 
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handleMobileNavClick('/guide');
+                  }}
+                  className={`font-semibold transition-colors py-3 px-2 text-left rounded-lg w-full touch-manipulation ${
+                    isActiveRoute('/guide') 
+                      ? 'text-orange-200 underline decoration-2 decoration-orange-200 bg-slate-800/50' 
+                      : 'text-white hover:text-[#75E6DA] hover:bg-slate-800/30 active:bg-slate-700/50'
+                  }`}
+                >
+                  Guide
+                </button>
 
-                <Button variant="secondary" onClick={() => { setIsMenuOpen(false); openLoginModal(); }}>
-                  <LogIn size={16} className="inline mr-1" /> Login
-                </Button>
-                <Button variant="primary" onClick={() => { setIsMenuOpen(false); openSignupModal(); }}>
-                  <UserPlus size={16} className="inline mr-1" /> Signup
-                </Button>
+                <div className="pt-3 space-y-2">
+                  <Button variant="secondary" onClick={() => { setIsMenuOpen(false); openLoginModal(); }} className="w-full justify-center">
+                    Login
+                  </Button>
+                  <Button variant="primary" onClick={() => { setIsMenuOpen(false); openSignupModal(); }} className="w-full justify-center">
+                    Signup
+                  </Button>
+                </div>
               </>
             ) : (
-              <Button variant="primary" onClick={() => { setIsMenuOpen(false); handleLogout(); }}>
-                <LogOut size={16} className="inline mr-1" /> Logout
+              <Button variant="primary" onClick={() => { setIsMenuOpen(false); handleLogout(); }} className="w-full justify-center">
+                Logout
               </Button>
             )}
           </div>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import { Mail, Phone, MapPin, Send,} from "lucide-react";
+import { Mail, Phone, MapPin, Send } from "lucide-react";
+import Contactpage from "../../assets/Contactpage.png";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -16,7 +17,7 @@ const Contact = () => {
     e.preventDefault();
 
     if (!formData.name || !formData.email || !formData.message) {
-      toast.error("Please fill in all fields.");
+      toast.error("Please fill in all required fields.");
       return;
     }
 
@@ -25,146 +26,107 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-500 to-slate-900 overflow-hidden">
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl"></div>
-        <div className="absolute top-40 -left-40 w-80 h-80 bg-pink-500/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-40 right-40 w-60 h-60 bg-blue-500/20 rounded-full blur-3xl"></div>
-      </div>
-
-      <div className="relative z-10 px-6 py-16 max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          
-          
-          <h1 className="text-6xl font-extrabold mb-6 bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent leading-tight">
-            Contact Us
-          </h1>
-          
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Have questions or feedback? We'd love to hear from you! 
-            <span className="text-purple-300 font-semibold"> Let's start a conversation</span>
-          </p>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          <div className="space-y-8">
-            <div className="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10 shadow-xl">
-              <h2 className="text-3xl font-bold text-white mb-6">Let's Connect</h2>
-              <p className="text-gray-300 mb-8 leading-relaxed">
-                Ready to transform your learning experience? Reach out to us through any of these channels.
+    <div 
+      className="min-h-screen bg-cover bg-center bg-no-repeat relative"
+      style={{ backgroundImage: `url(${Contactpage})` }}
+    >
+      {/* All Content in One Section */}
+      <div className="relative py-8 sm:py-12 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-8 sm:mb-10">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 text-slate-900 backdrop-blur-sm px-4 sm:px-5 py-2 rounded-lg inline-block">
+              Contact Us
+            </h1>
+            <div className="backdrop-blur-sm rounded-lg p-3 max-w-2xl mx-auto">
+              <p className="text-sm sm:text-base text-slate-700">
+                Have questions? We'd love to hear from you.
               </p>
-              
-              <div className="space-y-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
-                    <Mail size={20} className="text-white" />
-                  </div>
-                  <div>
-                    <p className="text-purple-300 font-semibold">Email</p>
-                    <p className="text-gray-300">support@vedantaq.com</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center">
-                    <Phone size={20} className="text-white" />
-                  </div>
-                  <div>
-                    <p className="text-purple-300 font-semibold">Phone</p>
-                    <p className="text-gray-300">+91 (555) 123-4567</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-blue-500 rounded-xl flex items-center justify-center">
-                    <MapPin size={20} className="text-white" />
-                  </div>
-                  <div>
-                    <p className="text-purple-300 font-semibold">Address</p>
-                    <p className="text-gray-300">Bangalore, Karnataka, India</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-md rounded-2xl p-8 border border-purple-400/30">
-              <h3 className="text-2xl font-bold text-white mb-6">Why Choose VedantaQ?</h3>
-              <div className="grid grid-cols-2 gap-6">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-purple-400 mb-2">24/7</div>
-                  <div className="text-gray-300 text-sm">Support Available</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-pink-400 mb-2">50K+</div>
-                  <div className="text-gray-300 text-sm">Happy Learners</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-blue-400 mb-2">99%</div>
-                  <div className="text-gray-300 text-sm">Satisfaction Rate</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-green-400 mb-2">&lt;1hr</div>
-                  <div className="text-gray-300 text-sm">Response Time</div>
-                </div>
-              </div>
             </div>
           </div>
 
-          <div className="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10 shadow-xl">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label className="block text-purple-300 font-semibold mb-3">
-                  Full Name
-                </label>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+            {/* Contact Info */}
+            <div className="space-y-3 sm:space-y-4 order-2 lg:order-1">
+              <h2 className="text-lg sm:text-xl font-bold text-slate-900 mb-3 sm:mb-4 bg-white/90 backdrop-blur-sm px-3 sm:px-4 py-2 rounded-lg inline-block">
+                Get In Touch
+              </h2>
+              
+              <div className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg border border-white/20">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Mail className="text-blue-600 text-sm sm:text-base" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-slate-900 text-sm sm:text-base">Email</h3>
+                  <p className="text-slate-600 text-xs sm:text-sm">support@etest.com</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg border border-white/20">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Phone className="text-green-600 text-sm sm:text-base" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-slate-900 text-sm sm:text-base">Phone</h3>
+                  <p className="text-slate-600 text-xs sm:text-sm">+1 (234) 567-8900</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg border border-white/20">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <MapPin className="text-purple-600 text-sm sm:text-base" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-slate-900 text-sm sm:text-base">Address</h3>
+                  <p className="text-slate-600 text-xs sm:text-sm">San Francisco, CA</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Contact Form */}
+            <div className="bg-white/95 backdrop-blur-sm rounded-lg shadow-lg p-5 sm:p-6 border border-white/20 order-1 lg:order-2">
+              <h2 className="text-lg sm:text-xl font-bold text-slate-900 mb-4 sm:mb-5">Send Message</h2>
+              
+              <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
                 <input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="Enter your full name"
-                  className="w-full bg-gray-700/50 backdrop-blur-sm rounded-xl border border-gray-600 px-4 py-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition-all duration-300"
+                  placeholder="Your Name"
+                  className="w-full px-3 sm:px-4 py-2 text-sm sm:text-base border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
                 />
-              </div>
 
-              <div>
-                <label className="block text-purple-300 font-semibold mb-3">
-                  Email Address
-                </label>
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="you@example.com"
-                  className="w-full bg-gray-700/50 backdrop-blur-sm rounded-xl border border-gray-600 px-4 py-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition-all duration-300"
+                  placeholder="Your Email"
+                  className="w-full px-3 sm:px-4 py-2 text-sm sm:text-base border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
                 />
-              </div>
 
-              <div>
-                <label className="block text-purple-300 font-semibold mb-3">
-                  Message
-                </label>
                 <textarea
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Tell us about your question or feedback..."
-                  rows={6}
-                  className="w-full bg-gray-700/50 backdrop-blur-sm rounded-xl border border-gray-600 px-4 py-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition-all duration-300 resize-none"
+                  placeholder="Your Message"
+                  rows={4}
+                  className="w-full px-3 sm:px-4 py-2 text-sm sm:text-base border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
                   required
                 />
-              </div>
 
-              <button
-                type="submit"
-                className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 flex items-center justify-center gap-2 group"
-              >
-                <Send size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
-                Send Message
-              </button>
-            </form>
+                <button
+                  type="submit"
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-5 py-2 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors text-sm sm:text-base"
+                >
+                  <Send size={16} />
+                  Send Message
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </div>

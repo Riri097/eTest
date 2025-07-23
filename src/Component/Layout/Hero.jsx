@@ -1,206 +1,265 @@
-import React, { useState, useEffect } from "react";
-import { FaBrain, FaChartLine, FaClipboardList, FaRocket, FaGraduationCap, FaLightbulb } from "react-icons/fa";
-import { BookOpen, ShieldCheck, Users, Zap, Target, Award } from "lucide-react";
+import React from "react";
+import { FaBrain, FaChartLine, FaGraduationCap, FaLightbulb } from "react-icons/fa";
+import { Target, Award, Zap } from "lucide-react";
 import Button from "../UI/Button";
-import Card from "../UI/Card";
-
-const features = [
-  {
-    icon: FaBrain,
-    title: "AI-Powered Learning",
-    description: "Advanced algorithms create personalized quiz experiences that adapt to your learning style and pace.",
-  },
-  {
-    icon: FaChartLine,
-    title: "Smart Analytics",
-    description: "Detailed insights and performance metrics help you identify strengths and areas for improvement.",
-  },
-  {
-    icon: FaClipboardList,
-    title: "Gamified Progress",
-    description: "Earn achievements, unlock levels, and compete with friends to make learning addictive and fun.",
-  },
-];
-
-const highlights = [
-  {
-    icon: Zap,
-    title: "Lightning Fast Results",
-    description: "Get instant feedback and explanations the moment you submit your answers.",
-    gradient: "from-yellow-400 to-orange-500",
-  },
-  {
-    icon: Target,
-    title: "Precision Learning",
-    description: "Focus on exactly what you need to learn with our adaptive difficulty system.",
-    gradient: "from-green-400 to-blue-500",
-  },
-  {
-    icon: Award,
-    title: "Achievement System",
-    description: "Unlock badges, earn points, and climb leaderboards as you master new concepts.",
-    gradient: "from-purple-400 to-pink-500",
-  },
-];
+import hero from "../../assets/herobg.png";
 
 const Hero = () => {
-  const [currentFeature, setCurrentFeature] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentFeature((prev) => (prev + 1) % highlights.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
-
   const navigate = (path) => {
     console.log(`Navigating to: ${path}`);
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-400 via-gray-400 to-slate-900 overflow-hidden">
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-20 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl"></div>
-        <div className="absolute top-40 -left-40 w-80 h-80 bg-pink-500/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-40 right-40 w-60 h-60 bg-pink-400/20 rounded-full blur-3xl"></div>
+    <div className="min-h-screen bg-gray-50">
+      <div
+      className="h-[90vh] sm:h-[85vh] md:h-[90vh] bg-cover bg-center bg-no-repeat flex items-center relative"
+      style={{ backgroundImage: `url(${hero})` }}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
+        <div className="lg:w-1/2 text-left">
+          <h1
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight"
+            style={{ color: "#0B1F3A" }}
+          >
+            Awaken The Mind,
+            <span className="block" style={{ color: "#0B1F3A" }}>
+              Master The Test
+            </span>
+          </h1>
+          <p
+            className="text-base sm:text-lg mb-6 sm:mb-8 max-w-lg leading-relaxed"
+            style={{ color: "#333" }}
+          >
+            Transform your knowledge with personalized AI quizzes, adaptive
+            learning paths, and real-time progress tracking. Join thousands of
+            learners achieving their goals.
+          </p>
+          <div className="flex flex-col sm:flex-row">
+            <Button 
+              variant="primary" 
+              onClick={() => navigate("/login")}
+              className="text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3"
+            >
+              Get Started
+            </Button>
+          </div>
+        </div>
       </div>
+      
+    </div>
 
-      <div className="relative z-10 flex flex-col justify-center items-center px-6 pb-0">
-        <section className="max-w-6xl w-full flex flex-col md:flex-row items-center py-20 gap-12">
-          <div className="md:w-1/2 text-left">
-            <h1 className="text-6xl font-extrabold mb-6 bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent leading-tight">
-              Master Knowledge with 
-              <span className="block text-transparent bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text">
-                VedantaQ
-              </span>
-            </h1>
-
-            <p className="text-xl mb-8 text-gray-300 leading-relaxed max-w-lg">
-              Experience the future of learning with our AI-powered quiz platform. 
-              <span className="text-purple-300 font-semibold"> Personalized. Intelligent. Effective.</span>
-            </p>
-
-            <div className="flex gap-4 mb-8">
-              <Button variant="primary" onClick={() => navigate("/signup")}>
-                <FaGraduationCap className="inline mr-2" />
-                Start Learning 
-              </Button>
-              <Button variant="secondary" onClick={() => navigate("/Features")}>
-                <FaLightbulb className="inline mr-2" />
-                See More
-              </Button>
+      {/* Stats Section - Non-overlapping */}
+      <section className="py-12 sm:py-16 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-3 sm:mb-4">Trusted by Students Worldwide</h2>
+            <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto px-4">Join our growing community of learners and see why millions trust us for their educational journey</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            <div className="text-center p-6 sm:p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-6 border-orange-400 group hover:-translate-y-1">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:bg-orange-200 transition-colors">
+                <FaBrain className="text-xl sm:text-2xl text-orange-600" />
+              </div>
+              <div className="text-3xl sm:text-4xl font-bold text-orange-600 mb-2">50K+</div>
+              <div className="text-slate-700 font-semibold text-sm sm:text-base mb-1">Active Learners</div>
+              <div className="text-xs sm:text-sm text-slate-500">Students learning daily across 120+ countries</div>
             </div>
-
-            <div className="flex items-center gap-6 text-gray-400">
-              <div className="flex items-center">
-                <span className="text-2xl font-bold text-purple-400">50K+</span>
-                <span className="ml-2 text-sm">Active Learners</span>
+            <div className="text-center p-6 sm:p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-6 border-green-400 group hover:-translate-y-1">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:bg-green-200 transition-colors">
+                <FaChartLine className="text-xl sm:text-2xl text-green-600" />
               </div>
-              <div className="w-px h-6 bg-gray-600"></div>
-              <div className="flex items-center">
-                <span className="text-2xl font-bold text-pink-400">1M+</span>
-                <span className="ml-2 text-sm">Questions Solved</span>
+              <div className="text-3xl sm:text-4xl font-bold text-green-600 mb-2">98%</div>
+              <div className="text-slate-700 font-semibold text-sm sm:text-base mb-1">Success Rate</div>
+              <div className="text-xs sm:text-sm text-slate-500">Students achieve their learning goals with our platform</div>
+            </div>
+            <div className="text-center p-6 sm:p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-6 border-blue-400 group hover:-translate-y-1">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:bg-blue-200 transition-colors">
+                <FaGraduationCap className="text-xl sm:text-2xl text-blue-600" />
               </div>
+              <div className="text-3xl sm:text-4xl font-bold text-blue-600 mb-2">1M+</div>
+              <div className="text-slate-700 font-semibold text-sm sm:text-base mb-1">AI-Generated Questions</div>
+              <div className="text-xs sm:text-sm text-slate-500">Constantly updated database of smart questions</div>
+            </div>
+            <div className="text-center p-6 sm:p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-6 border-purple-400 group hover:-translate-y-1">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:bg-purple-200 transition-colors">
+                <Award className="text-xl sm:text-2xl text-purple-600" />
+              </div>
+              <div className="text-3xl sm:text-4xl font-bold text-purple-600 mb-2">24/7</div>
+              <div className="text-slate-700 font-semibold text-sm sm:text-base mb-1">Smart Support</div>
+              <div className="text-xs sm:text-sm text-slate-500">AI-powered assistance whenever you need help</div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div className="md:w-1/2 flex justify-center">
-            <div className="relative">
-              <img 
-                src="/src/assets/final.png" 
-                alt="VedantaQ Learning Platform"
-                className="w-full max-w-lg h-auto"
-              />
-            </div>
+      {/* Two Card Section */}
+      <section className="py-16 sm:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-3 sm:mb-4">Choose Your Learning Path</h2>
+            <p className="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto px-4">Whether you're just starting or looking to advance your skills, we have the perfect learning experience for you.</p>
           </div>
-        </section>
-
-        <section className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-          {features.map((feature) => (
-            <Card key={feature.title} {...feature} />
-          ))}
-        </section>
-
-        <section className="w-full max-w-6xl relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-pink-400/40 to-indigo-400/40 backdrop-blur-sm rounded-3xl"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20 rounded-3xl"></div>
-
-          <div className="relative py-16 px-8 text-center">
-            <div className="inline-flex items-center bg-orange-500/20 rounded-full px-6 py-3 mb-6 border border-orange-400/30">
-              <Award className="text-orange-400 mr-2" size={20} />
-              <span className="text-orange-300 font-medium">Why Choose Excellence?</span>
-            </div>
-
-            <h2 className="text-5xl font-extrabold text-white mb-4 leading-tight">
-              Transform Your Learning
-              <span className="block text-transparent bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text">
-                Experience
-              </span>
-            </h2>
-
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed">
-              Join a revolution in education where technology meets pedagogy to create 
-              <span className="text-orange-300 font-semibold"> unforgettable learning moments</span>
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-              {highlights.map(({ icon: Icon, title, description, gradient }) => (
-                <div key={title} className="group cursor-pointer">
-                  <div className="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10 shadow-xl">
-                    <div className="flex items-center gap-3 mb-6">
-                      <Icon size={40} className="text-orange-400" />
-                      <h3 className="text-2xl font-bold text-white">{title}</h3>
-                    </div>
-                    <p className="text-gray-300 leading-relaxed">{description}</p>
-                  </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+            <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-3xl p-6 sm:p-8 hover:shadow-xl transition-all duration-300 group">
+              <div className="flex flex-col sm:flex-row items-center gap-6">
+                <div className="flex-1 text-center sm:text-left">
+                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-3">
+                    Start Your Journey
+                  </h3>
+                  <p className="text-slate-600 mb-6 leading-relaxed">
+                    Begin with fundamentals and build your confidence with guided quizzes, instant feedback, and progress tracking.
+                  </p>
+                  <Button variant="secondary" onClick={"/login"} >
+                    <FaLightbulb className="inline mr-2 text-slate-900" />
+                    Get Started
+                  </Button>
                 </div>
-              ))}
+                <div className="w-20 h-20 sm:w-24 sm:h-24 bg-orange-200 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <FaBrain className="text-2xl sm:text-3xl text-slate-900" />
+                </div>
+              </div>
             </div>
 
-            <div className="relative overflow-hidden mt-16">
-              <div className="flex">
-                <div className="flex items-center justify-center min-w-full">
-                  <div className="flex items-center gap-12 text-center">
-                    <div className="flex flex-col items-center">
-                      <div className="text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                        50K+
-                      </div>
-                      <div className="text-gray-400 text-sm mt-1">Happy Learners</div>
-                    </div>
-                    
-                    <div className="w-px h-12 bg-gradient-to-b from-purple-400 to-pink-400 opacity-50"></div>
-                    
-                    <div className="flex flex-col items-center">
-                      <div className="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                        98%
-                      </div>
-                      <div className="text-gray-400 text-sm mt-1">Success Rate</div>
-                    </div>
-                    
-                    <div className="w-px h-12 bg-gradient-to-b from-cyan-400 to-blue-400 opacity-50"></div>
-                    
-                    <div className="flex flex-col items-center">
-                      <div className="text-4xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
-                        1M+
-                      </div>
-                      <div className="text-gray-400 text-sm mt-1">Questions Solved</div>
-                    </div>
-                    
-                    <div className="w-px h-12 bg-gradient-to-b from-green-400 to-emerald-400 opacity-50"></div>
-                    
-                    <div className="flex flex-col items-center">
-                      <div className="text-4xl font-bold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
-                        24/7
-                      </div>
-                      <div className="text-gray-400 text-sm mt-1">AI Support</div>
-                    </div>
-                  </div>
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-3xl p-6 sm:p-8 hover:shadow-xl transition-all duration-300 group">
+              <div className="flex flex-col sm:flex-row items-center gap-6">
+                <div className="flex-1 text-center sm:text-left">
+                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-3">
+                    Master Advanced Skills
+                  </h3>
+                  <p className="text-slate-600 mb-6 leading-relaxed">
+                    Challenge yourself with complex problems, compete globally, and earn industry-recognized certifications.
+                  </p>
+                  <Button variant="secondary">
+                    <Target className="inline mr-2 text-slate-900" />
+                    Take Challenge
+                  </Button>
+                </div>
+                <div className="w-20 h-20 sm:w-24 sm:h-24 bg-blue-200 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <FaChartLine className="text-2xl sm:text-3xl text-slate-900" />
                 </div>
               </div>
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-16 sm:py-20 bg-gradient-to-br from-slate-50 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-3 sm:mb-4">What Our Students Say</h2>
+            <p className="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto px-4">Real stories from learners who transformed their careers and achieved their goals with our platform</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {/* Testimonial 1 */}
+            <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border-t-4 border-orange-400 group hover:-translate-y-1">
+              <div className="mb-4 sm:mb-6">
+                <h4 className="font-bold text-slate-900 text-lg mb-1">Sarah Chen</h4>
+                <p className="text-slate-500 text-sm">Software Developer</p>
+              </div>
+              <div className="mb-4 sm:mb-6">
+                <div className="flex text-yellow-400 mb-3 sm:mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} className="text-base sm:text-lg">★</span>
+                  ))}
+                </div>
+                <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
+                  "The AI-powered quizzes helped me land my dream job at Google. The adaptive learning system knew exactly what I needed to improve on. Amazing platform!"
+                </p>
+              </div>
+            </div>
+
+            {/* Testimonial 2 */}
+            <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border-t-4 border-green-400 group hover:-translate-y-1">
+              <div className="mb-4 sm:mb-6">
+                <h4 className="font-bold text-slate-900 text-lg mb-1">Marcus Johnson</h4>
+                <p className="text-slate-500 text-sm">Data Scientist</p>
+              </div>
+              <div className="mb-4 sm:mb-6">
+                <div className="flex text-yellow-400 mb-3 sm:mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} className="text-base sm:text-lg">★</span>
+                  ))}
+                </div>
+                <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
+                  "From zero to data scientist in 6 months! The progress tracking kept me motivated, and the 24/7 support was incredibly helpful."
+                </p>
+              </div>
+            </div>
+
+            {/* Testimonial 3 */}
+            <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border-t-4 border-blue-400 group hover:-translate-y-1 md:col-span-2 lg:col-span-1">
+              <div className="mb-4 sm:mb-6">
+                <h4 className="font-bold text-slate-900 text-lg mb-1">Emily Rodriguez</h4>
+                <p className="text-slate-500 text-sm">Student</p>
+              </div>
+              <div className="mb-4 sm:mb-6">
+                <div className="flex text-yellow-400 mb-3 sm:mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} className="text-base sm:text-lg">★</span>
+                  ))}
+                </div>
+                <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
+                  "Passed my certification exam with 95%! The practice questions were so similar to the real test. This platform is a game-changer."
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Popular Categories */}
+      <section className="py-16 sm:py-20 bg-[#75E6DA]/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-3 sm:mb-4">Popular Learning Categories</h2>
+            <p className="text-lg sm:text-xl text-slate-600 px-4">Explore our most loved subjects and start building expertise today</p>
+          </div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            <div className="bg-white rounded-2xl p-4 sm:p-6 text-center hover:shadow-xl transition-all duration-300 group cursor-pointer">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-purple-100 to-purple-200 rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform">
+                <FaBrain className="text-lg sm:text-2xl text-slate-900" />
+              </div>
+              <h4 className="font-bold text-slate-900 mb-1 sm:mb-2 text-sm sm:text-base">Programming</h4>
+              <p className="text-xs sm:text-sm text-slate-600 mb-2 sm:mb-3">Master coding fundamentals</p>
+              <div className="text-xs text-[#1E3A8A] font-medium">2,847 quizzes</div>
+            </div>
+            <div className="bg-white rounded-2xl p-4 sm:p-6 text-center hover:shadow-xl transition-all duration-300 group cursor-pointer">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-green-100 to-green-200 rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform">
+                <FaChartLine className="text-lg sm:text-2xl text-slate-900" />
+              </div>
+              <h4 className="font-bold text-slate-900 mb-1 sm:mb-2 text-sm sm:text-base">Data Science</h4>
+              <p className="text-xs sm:text-sm text-slate-600 mb-2 sm:mb-3">Analytics & visualization</p>
+              <div className="text-xs text-[#1E3A8A] font-medium">1,523 quizzes</div>
+            </div>
+            <div className="bg-white rounded-2xl p-4 sm:p-6 text-center hover:shadow-xl transition-all duration-300 group cursor-pointer">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform">
+                <Award className="text-lg sm:text-2xl text-slate-900" />
+              </div>
+              <h4 className="font-bold text-slate-900 mb-1 sm:mb-2 text-sm sm:text-base">Certifications</h4>
+              <p className="text-xs sm:text-sm text-slate-600 mb-2 sm:mb-3">Industry standard exams</p>
+              <div className="text-xs text-[#1E3A8A] font-medium">956 quizzes</div>
+            </div>
+            <div className="bg-white rounded-2xl p-4 sm:p-6 text-center hover:shadow-xl transition-all duration-300 group cursor-pointer">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform">
+                <Zap className="text-lg sm:text-2xl text-slate-900" />
+              </div>
+              <h4 className="font-bold text-slate-900 mb-1 sm:mb-2 text-sm sm:text-base">Quick Tests</h4>
+              <p className="text-xs sm:text-sm text-slate-600 mb-2 sm:mb-3">Fast skill assessments</p>
+              <div className="text-xs text-[#1E3A8A] font-medium">3,241 quizzes</div>
+            </div>
+          </div>
+          <div className="text-center mt-8 sm:mt-12">
+            <button className="text-[#1E3A8A] hover:text-slate-900 font-medium text-base sm:text-lg hover:underline transition-colors">
+              View All Categories →
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      
     </div>
   );
 };
