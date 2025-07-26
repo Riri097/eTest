@@ -1,6 +1,5 @@
 import React from "react";
 import { BookOpen, PlayCircle, UserPlus, CheckCircle } from "lucide-react";
-import Guidepage from "../../assets/Guidepage.png";
 
 function Guide() {
 
@@ -28,10 +27,7 @@ function Guide() {
   ];
 
   return (
-    <div 
-      className="min-h-screen bg-cover bg-center bg-no-repeat relative"
-      style={{ backgroundImage: `url(${Guidepage})` }}
-    >
+    <div className="min-h-screen bg-white relative">
       {/* All Content in One Section */}
       <div className="relative py-8 sm:py-10 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">

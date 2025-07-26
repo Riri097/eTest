@@ -27,7 +27,7 @@ const Navbar = ({ isAuthenticated, handleLogout, openLoginModal, openSignupModal
   return (
     <>
       <nav className="bg-slate-900 shadow-md sticky top-0 z-50">
-        <div className="absolute inset-0 bg-[#75E6DA]/10"></div>
+        <div className="absolute inset-0 bg-slate-900"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2 flex justify-between items-center relative z-10">
           {isAuthenticated && (
             <button
@@ -52,27 +52,27 @@ const Navbar = ({ isAuthenticated, handleLogout, openLoginModal, openSignupModal
             {!isAuthenticated && (
               <>
                 <NavLink to="/" end className={({ isActive }) => 
-                  `font-semibold transition-colors ${isActive ? 'text-orange-200 underline decoration-2 decoration-orange-200' : 'text-white hover:text-[#75E6DA]'}`
+                  `font-semibold transition-colors ${isActive ? 'text-blue-400 underline decoration-2 decoration-blue-400' : 'text-white hover:text-blue-400]'}`
                 }>
                   Home
                 </NavLink>
                 <NavLink to="/features" className={({ isActive }) => 
-                  `font-semibold transition-colors ${isActive ? 'text-orange-200 underline decoration-2 decoration-orange-200' : 'text-white hover:text-[#75E6DA]'}`
+                  `font-semibold transition-colors ${isActive ? 'text-blue-400 underline decoration-2 decoration-blue-400' : 'text-white hover:text-blue-400'}`
                 }>
                   Features
                 </NavLink>
                 <NavLink to="/about" className={({ isActive }) => 
-                  `font-semibold transition-colors ${isActive ? 'text-orange-200 underline decoration-2 decoration-orange-200' : 'text-white hover:text-[#75E6DA]'}`
+                  `font-semibold transition-colors ${isActive ? 'text-blue-400 underline decoration-2 decoration-blue-400' : 'text-white hover:text-blue-400'}`
                 }>
                   About
                 </NavLink>
                 <NavLink to="/contact" className={({ isActive }) => 
-                  `font-semibold transition-colors ${isActive ? 'text-orange-200 underline decoration-2 decoration-orange-200' : 'text-white hover:text-[#75E6DA]'}`
+                  `font-semibold transition-colors ${isActive ? 'text-blue-400 underline decoration-2 decoration-blue-400' : 'text-white hover:text-blue-400'}`
                 }>
                   Contact
                 </NavLink>
                 <NavLink to="/guide" className={({ isActive }) => 
-                  `font-semibold transition-colors ${isActive ? 'text-orange-200 underline decoration-2 decoration-orange-200' : 'text-white hover:text-[#75E6DA]'}`
+                  `font-semibold transition-colors ${isActive ? 'text-blue-400 underline decoration-2 decoration-blue-400' : 'text-white hover:text-blue-400'}`
                 }>
                   Guide
                 </NavLink>
@@ -123,7 +123,7 @@ const Navbar = ({ isAuthenticated, handleLogout, openLoginModal, openSignupModal
                   }}
                   className={`font-semibold transition-colors py-3 px-2 text-left rounded-lg w-full touch-manipulation ${
                     isActiveRoute('/') 
-                      ? 'text-orange-200 underline decoration-2 decoration-orange-200 bg-slate-800/50' 
+                      ? 'text-blue-500 underline decoration-2 decoration-blue-500 bg-slate-800/50' 
                       : 'text-white hover:text-[#75E6DA] hover:bg-slate-800/30 active:bg-slate-700/50'
                   }`}
                 >
@@ -138,7 +138,7 @@ const Navbar = ({ isAuthenticated, handleLogout, openLoginModal, openSignupModal
                   }}
                   className={`font-semibold transition-colors py-3 px-2 text-left rounded-lg w-full touch-manipulation ${
                     isActiveRoute('/features') 
-                      ? 'text-orange-200 underline decoration-2 decoration-orange-200 bg-slate-800/50' 
+                      ? 'text-blue-500 underline decoration-2 decoration-blue-500 bg-slate-800/50' 
                       : 'text-white hover:text-[#75E6DA] hover:bg-slate-800/30 active:bg-slate-700/50'
                   }`}
                 >
@@ -153,7 +153,7 @@ const Navbar = ({ isAuthenticated, handleLogout, openLoginModal, openSignupModal
                   }}
                   className={`font-semibold transition-colors py-3 px-2 text-left rounded-lg w-full touch-manipulation ${
                     isActiveRoute('/about') 
-                      ? 'text-orange-200 underline decoration-2 decoration-orange-200 bg-slate-800/50' 
+                      ? 'text-blue-500 underline decoration-2 decoration-orange-200 bg-slate-800/50' 
                       : 'text-white hover:text-[#75E6DA] hover:bg-slate-800/30 active:bg-slate-700/50'
                   }`}
                 >
@@ -183,8 +183,8 @@ const Navbar = ({ isAuthenticated, handleLogout, openLoginModal, openSignupModal
                   }}
                   className={`font-semibold transition-colors py-3 px-2 text-left rounded-lg w-full touch-manipulation ${
                     isActiveRoute('/guide') 
-                      ? 'text-orange-200 underline decoration-2 decoration-orange-200 bg-slate-800/50' 
-                      : 'text-white hover:text-[#75E6DA] hover:bg-slate-800/30 active:bg-slate-700/50'
+                      ? 'text-blue-500 underline decoration-2 decoration-blue-500 bg-slate-800/50' 
+                      : 'text-white hover:text-blue-500 hover:bg-slate-800/30 active:bg-slate-700/50'
                   }`}
                 >
                   Guide
@@ -208,7 +208,7 @@ const Navbar = ({ isAuthenticated, handleLogout, openLoginModal, openSignupModal
         )}
       </nav>
 
-      <div className="w-full h-[4px] bg-[#E7F2F8]"></div>
+      <div className="w-full h-[4px] bg-blue-400"></div>
     </>
   );
 };

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
-import Contactpage from "../../assets/Contactpage.png";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -26,10 +25,7 @@ const Contact = () => {
   };
 
   return (
-    <div 
-      className="min-h-screen bg-cover bg-center bg-no-repeat relative"
-      style={{ backgroundImage: `url(${Contactpage})` }}
-    >
+    <div className="min-h-screen bg-white relative">
       {/* All Content in One Section */}
       <div className="relative py-8 sm:py-12 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">

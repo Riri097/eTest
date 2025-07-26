@@ -98,36 +98,30 @@ const Profile = () => {
 
   if (loading)
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-800 to-slate-900 flex items-center justify-center">
-        <p className="text-center text-purple-300 text-lg">Loading profile...</p>
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <p className="text-center text-slate-600 text-lg">Loading profile...</p>
       </div>
     );
 
   return (
-    <div className="w-full min-h-screen bg-gradient-to-br from-slate-900 via-gray-800 to-slate-900 p-6 lg:p-8">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-40 -left-40 w-80 h-80 bg-pink-500/20 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-blue-500/15 rounded-full blur-3xl"></div>
-      </div>
-
-      <div className="relative z-10 max-w-4xl mx-auto">
+    <div className="w-full min-h-screen bg-gray-50 p-6 lg:p-8">
+      <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
-            <User className="w-8 h-8 text-white" />
+          <div className="w-16 h-16 bg-blue-400 rounded-full flex items-center justify-center mx-auto mb-4">
+            <User className="w-8 h-8 text-slate-900" />
           </div>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent mb-3">
+          <h1 className="text-3xl font-bold text-slate-900 mb-3">
             My Profile
           </h1>
-          <p className="text-base text-gray-300 max-w-2xl mx-auto">
+          <p className="text-base text-slate-600 max-w-2xl mx-auto">
             Manage your personal information and account settings
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto mt-4 rounded-full"></div>
+          <div className="w-24 h-1 bg-blue-400 mx-auto mt-4 rounded-full"></div>
         </div>
 
-        <div className="bg-white/10 backdrop-blur-md text-white p-6 lg:p-8 rounded-2xl shadow-2xl border border-white/20">
+        <div className="bg-white p-6 lg:p-8 rounded-2xl shadow-xl border border-slate-200">
           {error && (
-            <div className="mb-4 bg-red-500/20 backdrop-blur-sm text-red-300 p-3 rounded-lg border border-red-400/30 shadow-lg">
+            <div className="mb-4 bg-red-50 text-red-800 p-3 rounded-lg border border-red-200 shadow-sm">
               <div className="flex items-center">
                 <div className="w-2 h-2 bg-red-400 rounded-full mr-3"></div>
                 {error}
@@ -135,7 +129,7 @@ const Profile = () => {
             </div>
           )}
           {successMsg && (
-            <div className="mb-4 bg-green-500/20 backdrop-blur-sm text-green-300 p-3 rounded-lg border border-green-400/30 shadow-lg">
+            <div className="mb-4 bg-green-50 text-green-800 p-3 rounded-lg border border-green-200 shadow-sm">
               <div className="flex items-center">
                 <div className="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
                 {successMsg}
@@ -146,7 +140,7 @@ const Profile = () => {
           <form onSubmit={handleSubmit} noValidate className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block mb-2 font-semibold text-gray-300 text-sm" htmlFor="first_name">
+            <label className="block mb-2 font-semibold text-slate-700 text-sm" htmlFor="first_name">
               First Name
             </label>
             <input
@@ -155,13 +149,13 @@ const Profile = () => {
               id="first_name"
               value={formData.first_name}
               onChange={handleChange}
-              className="w-full p-3 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 text-sm"
+              className="w-full p-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300 text-sm"
               required
             />
           </div>
 
           <div>
-            <label className="block mb-2 font-semibold text-gray-300 text-sm" htmlFor="last_name">
+            <label className="block mb-2 font-semibold text-slate-700 text-sm" htmlFor="last_name">
               Last Name
             </label>
             <input
@@ -170,14 +164,14 @@ const Profile = () => {
               id="last_name"
               value={formData.last_name}
               onChange={handleChange}
-              className="w-full p-3 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 text-sm"
+              className="w-full p-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300 text-sm"
               required
             />
           </div>
         </div>
 
         <div>
-          <label className="block mb-2 font-semibold text-gray-300 text-sm" htmlFor="username">
+          <label className="block mb-2 font-semibold text-slate-700 text-sm" htmlFor="username">
             Username
           </label>
           <input
@@ -186,13 +180,13 @@ const Profile = () => {
             id="username"
             value={formData.username}
             onChange={handleChange}
-            className="w-full p-3 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 text-sm"
+            className="w-full p-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300 text-sm"
             required
           />
         </div>
 
         <div>
-          <label className="block mb-2 font-semibold text-gray-300 text-sm" htmlFor="email">
+          <label className="block mb-2 font-semibold text-slate-700 text-sm" htmlFor="email">
             Email Address
           </label>
           <input
@@ -201,7 +195,7 @@ const Profile = () => {
             id="email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full p-3 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 text-sm"
+            className="w-full p-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300 text-sm"
             required
           />
         </div>
@@ -210,7 +204,7 @@ const Profile = () => {
           <button
             type="submit"
             disabled={saving}
-            className={`px-6 py-3 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold shadow-xl transition-all duration-300 transform hover:scale-105 text-sm ${
+            className={`px-6 py-3 rounded-lg bg-blue-400 hover:bg-blue-500 text-slate-900 font-semibold shadow-xl transition-all duration-300 transform hover:scale-105 text-sm ${
               saving ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >

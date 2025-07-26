@@ -1,6 +1,5 @@
 import React from "react";
 import { Brain, Sparkles, Target } from "lucide-react";
-import page from "../../assets/Aboutpage.png";
 
 const aboutDetails = [
   {
@@ -25,10 +24,7 @@ const aboutDetails = [
 
 const About = () => {
   return (
-    <div 
-      className="min-h-screen bg-cover bg-center bg-no-repeat relative"
-      style={{ backgroundImage: `url(${page})` }}
-    >
+    <div className="min-h-screen bg-white relative">
       {/* All Content in One Section */}
       <div className="relative py-12 sm:py-16 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
