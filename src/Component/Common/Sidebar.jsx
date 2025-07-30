@@ -18,8 +18,8 @@ const Sidebar = ({ username, sidebarOpen, closeSidebar, handleLogout }) => {
   const linkClass = ({ isActive }) =>
     `flex items-center gap-3 px-4 py-3 rounded-md transition ${
       isActive
-        ? "bg-blue-400 text-white font-semibold shadow-lg"
-        : "hover:bg-slate-100 text-slate-700 hover:text-blue-600"
+        ? "bg-slate-900 text-white font-semibold shadow-lg"
+        : "hover:bg-slate-100 text-slate-700 hover:text-slate-900"
     }`;
 
   const handleLinkClick = () => {
@@ -30,15 +30,15 @@ const Sidebar = ({ username, sidebarOpen, closeSidebar, handleLogout }) => {
 
   return (
     <>
-      <aside className="hidden lg:flex w-64 bg-white text-slate-700 min-h-screen border-r border-slate-200 flex-col shadow-xl">
+      <aside className="hidden lg:flex w-64 bg-blue-50 text-slate-700 min-h-screen border-r border-slate-200 flex-col shadow-xl">
         <Link
           to="/profile"
-          className="px-6 py-5 border-b border-slate-200 flex items-center gap-3 bg-slate-50 hover:bg-slate-100 transition"
+          className="px-6 py-5 border-b border-slate-200 flex items-center gap-3 bg-blue-100 hover:bg-blue-50 transition"
         >
-          <div className="w-8 h-8 bg-blue-400 rounded-full flex items-center justify-center">
+          <div className="w-8 h-8 bg-slate-900 rounded-full flex items-center justify-center">
             <User className="w-4 h-4 text-white" />
           </div>
-          <span className="font-semibold text-lg truncate text-blue-600">
+          <span className="font-semibold text-lg truncate text-slate-900">
             {username || "User"}
           </span>
         </Link>
@@ -100,17 +100,17 @@ const Sidebar = ({ username, sidebarOpen, closeSidebar, handleLogout }) => {
             className="flex items-center gap-3 hover:bg-slate-100 rounded-lg p-2 transition"
             onClick={handleLinkClick}
           >
-            <div className="w-8 h-8 bg-blue-400 rounded-full flex items-center justify-center">
+            <div className="w-8 h-8 bg-slate-900 rounded-full flex items-center justify-center">
               <User className="w-4 h-4 text-white" />
             </div>
-            <span className="font-semibold text-lg truncate text-blue-600">
+            <span className="font-semibold text-lg truncate text-slate-900">
               {username || "User"}
             </span>
           </Link>
           
           <button
             onClick={closeSidebar}
-            className="text-slate-500 hover:text-blue-600 transition-colors p-1"
+            className="text-slate-500 hover:text-slate-900 transition-colors p-1"
             aria-label="Close sidebar"
           >
             <X className="w-6 h-6" />

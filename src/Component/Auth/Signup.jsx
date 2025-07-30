@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { X, User, Mail, Lock } from "lucide-react";
+import OtpVerification from "./OtpInput";
 
-function Signup({ onClose, toggleModals }) {
+function Signup({ onClose, setIsAuthenticated, toggleModals }) {
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
@@ -12,7 +13,10 @@ function Signup({ onClose, toggleModals }) {
     confirm_password: "",
   });
 
-    const baseUrl = import.meta.env.VITE_API_BASE_URL;
+  const [loading, setLoading] = useState(false);
+  const [otpPending, setOtpPending] = useState(false);
+  const [signupEmail, setSignupEmail] = useState("");
+  const [userId, setUserId] = useState(null);
 
   const handleChange = (e) =>
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -25,32 +29,69 @@ function Signup({ onClose, toggleModals }) {
       return;
     }
 
-    fetch(baseUrl + "/account/signup", {
+    setLoading(true);
+
+    const submitData = {
+      first_name: formData.first_name,
+      last_name: formData.last_name,
+      username: formData.username,
+      email: formData.email,
+      password: formData.password,
+    };
+    // const baseUrl = import.meta.env.VITE_API_BASE_URL;
+    fetch("https://42scszck-8000.inc1.devtunnels.ms/account/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
+      body: JSON.stringify(submitData),
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.message) {
+        setLoading(false);
+        if (data.message && data.user_id) {
           toast.success(data.message);
-          onClose();
-          toggleModals && toggleModals();
-        } else {
-          toast.error(data.error || "Signup failed: ");
+          setSignupEmail(formData.email);
+          setUserId(data.user_id);
+          setOtpPending(true);
+          toast.success(data.message);
+          toast.info("Please verify your email with the OTP sent.");
         }
       })
-      .catch(() => toast.error("Signup failed. Try again."));
+      .catch(() => {
+        setLoading(false);
+        toast.error("Signup failed. Try again.");
+      });
   };
 
+  // When OTP verified successfully:
+  const handleOtpVerified = () => {
+    setIsAuthenticated(true); // Mark user authenticated
+    setOtpPending(false);
+    onClose();
+  };
+
+  const handleOtpCancel = () => {
+    setOtpPending(false);
+  };
+
+  if (otpPending) {
+    return (
+      <OtpVerification
+        userId={userId}
+        email={signupEmail}
+        onVerified={handleOtpVerified}
+        onCancel={handleOtpCancel}
+      />
+    );
+  }
+  
   return (
     <div
       className="fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50"
       onClick={onClose}
     >
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#75E6DA]/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-40 -left-40 w-80 h-80 bg-[#75E6DA]/20 rounded-full blur-3xl"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-400/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-40 -left-40 w-80 h-80 bg-blue-400/20 rounded-full blur-3xl"></div>
       </div>
 
       <div
@@ -144,9 +185,12 @@ function Signup({ onClose, toggleModals }) {
           <div className="flex justify-center">
             <button
               type="submit"
-              className="w-32 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105"
+              disabled={loading}
+              className={`w-32 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 ${
+                loading ? "opacity-60 cursor-not-allowed" : ""
+              }`}
             >
-              Sign Up
+              {loading ? "Signing Up..." : "Sign Up"}
             </button>
           </div>
         </form>
@@ -156,6 +200,7 @@ function Signup({ onClose, toggleModals }) {
           <button
             className="text-blue-600 font-semibold underline hover:text-blue-700 transition-colors duration-200"
             onClick={() => {
+              onClose();
               toggleModals && toggleModals();
             }}
             type="button"

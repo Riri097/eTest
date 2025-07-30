@@ -25,17 +25,17 @@ function Dashboard() {
     {
       label: "Completed Topics",
       value: 5,
-      icon: <CheckCircle className="w-10 h-10 text-green-400" />,
+      icon: <CheckCircle className="w-10 h-10 text-blue-400" />,
     },
   ];
 
   return (
-    <main className="w-full min-h-screen bg-gray-50 p-6 lg:p-8">
+    <main className="w-full min-h-screen bg-white p-6 lg:p-8">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-blue-400 rounded-full flex items-center justify-center">
-              <BookOpen className="w-6 h-6 text-slate-900" />
+            <div className="w-12 h-12 bg-slate-900 rounded-full flex items-center justify-center">
+              <BookOpen className="w-6 h-6 text-white" />
             </div>
             <h1 className="text-4xl lg:text-5xl font-bold text-slate-900">
               Welcome back, {user}!
