@@ -38,8 +38,8 @@ function Signup({ onClose, setIsAuthenticated, toggleModals }) {
       email: formData.email,
       password: formData.password,
     };
-    // const baseUrl = import.meta.env.VITE_API_BASE_URL;
-    fetch("https://42scszck-8000.inc1.devtunnels.ms/account/signup", {
+    const baseUrl = import.meta.env.VITE_API_BASE_URL;
+    fetch(baseUrl + "/account/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(submitData),

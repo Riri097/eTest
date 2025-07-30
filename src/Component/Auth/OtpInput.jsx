@@ -16,8 +16,10 @@ function OtpInput({ userId, onVerified, onCancel }) {
     }
 
     setLoading(true);
+// https://42scszck-8000.inc1.devtunnels.ms/account/verify-otp
+    const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
-    fetch("https://42scszck-8000.inc1.devtunnels.ms/account/verify-otp", {
+    fetch(baseUrl + "/account/verify-otp", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ user_id: userId, otp }),
